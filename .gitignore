@@ -1,3 +1,4 @@
+.bundle
 .DS_Store
 **/.DS_Store
 log/*
@@ -5,4 +6,5 @@ tmp/*
 tmp/**/*
 config/database.yml
 db/schema.rb
+db/*.sqlite3
 rerun.txt
