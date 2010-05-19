@@ -29,7 +29,9 @@ class AuthenticationController < ApplicationController
         false
       end
 
-      req.request_header = request.authorization
+      req.request_header do
+        request.authorization
+      end
     end
 
     unless oauth_req.validate
