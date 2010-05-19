@@ -9,8 +9,17 @@ describe AuthenticationController, "oauth2 verify request" do
     get 'hello'
     
     response.should_not be_success
-    response.status.should == 401
+    response.status.should be 401
   end
+
+  it "should succeed with valid credentials" do
+    pending "set the valid credentials"
+    get 'hello'
+  end
+
+  it "should return a token if authenticated"
+
+  it "should redirect to redirect uri"
 #
 #  it "should save the menu item" do
 #    @menu_item.should_receive(:save).and_return(true)
