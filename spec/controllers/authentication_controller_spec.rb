@@ -13,7 +13,7 @@ describe AuthenticationController, "oauth2 verify request" do
   end
 
   it "should return a token after authentication" do
-    request.headers['authorization'] = 'Token token="vF9dft4qmT"'
+    request.headers['token'] = 'Token token="vF9dft4qmT"'
 #    request.realm           = "my little farm"
 #    request.algorithms      = 'hmac-sha256'
 #    request.access_token    = 'vF9dft4qmT'

@@ -22,6 +22,8 @@ class AuthenticationController < ApplicationController
       end
 
       req.access_token do
+        puts 'req.request_header.token'
+        puts req.request_header.token
         token_for(req.request_header.token)
       end
 
