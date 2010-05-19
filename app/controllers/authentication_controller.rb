@@ -4,11 +4,12 @@ class AuthenticationController < ApplicationController
   before_filter :oauth2_verify_request
 
   def oauth2_verify_request
-    req = OAuth2::Server::Request.new do |req|
+    oauth_req = OAuth2::Server::Request.new do |req|
       req.realm      = "dvdpost.be"
       req.algorithms = 'hmac-sha256'
 
       req.method do
+        
         request.method
       end
 
@@ -35,11 +36,11 @@ class AuthenticationController < ApplicationController
       end
     end
 
-    unless req.validate
+    unless oauth_req.validate
       head :unauthorized
     end
 
-    logger.info req.valid? ? 'VALID' : 'NOT VALID'
+    logger.info oauth_req.valid? ? 'VALID' : 'NOT VALID'
   end
 
   def hello
