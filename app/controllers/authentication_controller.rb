@@ -32,6 +32,7 @@ class AuthenticationController < ApplicationController
       req.request_header do
         puts 'request.authorization'
         puts request.authorization
+        
         request.authorization
       end
     end
