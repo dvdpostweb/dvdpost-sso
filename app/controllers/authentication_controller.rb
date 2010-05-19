@@ -25,15 +25,11 @@ class AuthenticationController < ApplicationController
         token_for(req.request_header.token)
       end
 
-      # this was access_token_expired in the example, which I think is incorrect
       req.access_token_expired? do
         false
       end
 
-      # This was request_header in the example which did not work. There is some weird stuff going on in there
-      req.original_request_header do
-        request.authorization
-      end
+      req.request_header = request.authorization
     end
 
     unless oauth_req.validate
