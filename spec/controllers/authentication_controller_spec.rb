@@ -1,12 +1,15 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-describe AuthenticationController, "oauth2 verify request unauthenticated" do
+describe AuthenticationController, "oauth2 verify request" do
 #  before(:each) do
 #    MenuItem.stub!(:new).and_return(@menu_item = mock_model(MenuItem, :save=>true))
 #  end
 
-  it "should fail authentication" do
+  it "should fail with invalid credentials" do
     get 'hello'
+    
+    response.should_not be_success
+    response.status.should == 401
   end
 #
 #  it "should save the menu item" do
