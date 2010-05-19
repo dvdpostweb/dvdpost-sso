@@ -12,12 +12,20 @@ describe AuthenticationController, "oauth2 verify request" do
     response.status.should be 401
   end
 
-  it "should succeed with valid credentials" do
-    pending "set the valid credentials"
+  it "should return a token after authentication" do
+    request.headers['authorization'] = 'Token token="vF9dft4qmT"'
+#    request.realm           = "my little farm"
+#    request.algorithms      = 'hmac-sha256'
+#    request.access_token    = 'vF9dft4qmT'
+#    subject.access_token_expired? { false }
     get 'hello'
+    response.should be_sucess
   end
 
-  it "should return a token if authenticated"
+  it "should succeed with valid token" do
+    pending "set the valid token"
+    get 'hello'
+  end
 
   it "should redirect to redirect uri"
 #

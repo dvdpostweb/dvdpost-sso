@@ -29,9 +29,13 @@ class AuthenticationController < ApplicationController
         false
       end
 
-      req.request_header = request.authorization
+      req.request_header do
+        puts 'request.authorization'
+        puts request.authorization
+        request.authorization
+      end
     end
-
+    
     unless oauth_req.validate
       head :unauthorized
     end
