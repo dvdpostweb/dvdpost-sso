@@ -25,7 +25,8 @@ class AuthenticationController < ApplicationController
     end
     
     unless req.validate
-      warden.custom_failure!
+      #FIXME: NASTY, we need to adapt RSpec (mock worden or smth) 
+      warden.custom_failure! if warden
       head :unauthorized
     end
   end
