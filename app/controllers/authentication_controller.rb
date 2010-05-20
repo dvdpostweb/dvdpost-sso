@@ -1,3 +1,4 @@
+require 'oauth2/server'
 require 'oauth2/server/request'
 
 class AuthenticationController < ApplicationController
