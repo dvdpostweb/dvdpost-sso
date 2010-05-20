@@ -28,12 +28,18 @@ class AuthenticationController < ApplicationController
     end
   end
 
-  def login
-    
+  def get_token
+    callback_uri = param[:callback_uri]
+    authenticate_user!
+    redirect_to callback_url
+  end
+
+  def callback_uri(root_uri, token)
+    root_uri += root_uri.matches(/\?/) ? "&code=#{token}" : "?code=#{token}"
   end
 
   def hello
-    # validate_token
     @hello = 'SSO is SS with an O.'
+    validate_token
   end
 end

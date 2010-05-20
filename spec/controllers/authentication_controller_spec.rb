@@ -9,7 +9,7 @@ describe AuthenticationController, "validate token" do
   end
 
   it "should redirect to login with invalid credentials" do
-    get '/hello'
+    get 'hello'
 
     response.status.should be 401
   end
