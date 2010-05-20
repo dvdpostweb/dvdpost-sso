@@ -25,6 +25,7 @@ class AuthenticationController < ApplicationController
     end
     
     unless req.validate
+      warden.custom_failure!
       head :unauthorized
     end
   end
@@ -34,7 +35,7 @@ class AuthenticationController < ApplicationController
   end
 
   def hello
-    # validate_token
+    validate_token
     @hello = 'SSO is SS with an O.'
   end
 end
