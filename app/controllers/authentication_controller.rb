@@ -4,46 +4,32 @@ class AuthenticationController < ApplicationController
   before_filter :oauth2_verify_request
 
   def oauth2_verify_request
-    oauth_req = OAuth2::Server::Request.new do |req|
+    req = OAuth2::Server::Request.new do |req|
       req.realm      = "dvdpost.be"
       req.algorithms = 'hmac-sha256'
 
-      req.method do
-        
-        request.method
-      end
+      req.method = request.method
 
-      req.request_uri do
-        request.request_uri
-      end
+      req.request_uri = request.fullpath
 
-      req.host_with_port do
-        request.host + request.port.to_s
-      end
+      req.host_with_port = request.host + request.port.to_s
 
-      req.access_token do
-        puts 'req.request_header.token'
-        puts req.request_header.token
-        token_for(req.request_header.token)
-      end
+      req.access_token = params['access_token']
 
       req.access_token_expired? do
         false
       end
 
       req.request_header do
-        puts 'request.authorization'
-        puts request.authorization
-        
         request.authorization
       end
     end
     
-    unless oauth_req.validate
+    unless req.validate
       head :unauthorized
     end
 
-    logger.info oauth_req.valid? ? 'VALID' : 'NOT VALID'
+    logger.info req.valid? ? 'VALID' : 'NOT VALID'
   end
 
   def hello
