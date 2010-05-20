@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 SITE_URL = 'https://localhost:51689'
-#SITE_URL = 'https://dvdpost-sso.dev'
+SITE_URL = 'https://sso.dvdpost.dev'
 
 describe AuthenticationController, "validate token" do
   before(:each) do
@@ -24,13 +24,18 @@ describe AuthenticationController, "validate token" do
             signature="ZSPk4B37TjHu3/yyu31LD7/agpzPjhYQEszZk7GdEfs="
     EOS
 
-    token = OAuth2::AccessToken.new @client, "vF9dft4qmT"
+    token = OAuth2::AccessToken.new @client, "vF9dft4qmT"    
     resp = token.get '/', {}, headers
     response.status.should be 200
   end
 end
 
-describe AuthenticationController, "login" do
+describe AuthenticationController, "get token" do
+  it "should redirect to login" do
+    get 'get_token'
+    response.should_be redirect_to(sign_in_path)
+  end
+
   it "should return a token after authentication" do
     @client
   end
