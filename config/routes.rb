@@ -4,6 +4,8 @@ DvdpostSso::Application.routes.draw do |map|
 
   match 'oauth/authorize' => 'authentication#hello'
 
+  match 'login' => 'authentication#login'
+
   root :to => "authentication#hello"
   # The priority is based upon order of creation:
   # first created -> highest priority.

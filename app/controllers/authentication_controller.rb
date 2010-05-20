@@ -1,9 +1,7 @@
 require 'oauth2/server/request'
 
 class AuthenticationController < ApplicationController
-  before_filter :oauth2_verify_request
-
-  def oauth2_verify_request
+  def validate_token
     req = OAuth2::Server::Request.new do |req|
       req.realm      = "dvdpost.be"
       req.algorithms = 'hmac-sha256'
@@ -28,11 +26,14 @@ class AuthenticationController < ApplicationController
     unless req.validate
       head :unauthorized
     end
+  end
 
-    logger.info req.valid? ? 'VALID' : 'NOT VALID'
+  def login
+    
   end
 
   def hello
+    validate_token
     @hello = 'SSO is SS with an O.'
   end
 end
