@@ -79,7 +79,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :token_authenticatable
   # Defines name of the authentication token params key
-  # config.token_authentication_key = :auth_token
+  config.token_authentication_key = :auth_token
 
   # ==> General configuration
   # Load and configure the ORM. Supports :active_record (default), :mongoid

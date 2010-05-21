@@ -43,6 +43,7 @@ class AuthenticationController < ApplicationController
 
   def hello
     validate_token
+    # authenticate_user!
     @hello = 'SSO is SS with an O.'
   end
 end
