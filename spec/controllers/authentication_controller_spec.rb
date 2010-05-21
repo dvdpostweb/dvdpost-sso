@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-SITE_URL = 'https://localhost:51689'
+# SITE_URL = 'https://localhost:51689'
 SITE_URL = 'https://sso.dvdpost.dev'
 
 describe AuthenticationController, "validate token" do
@@ -16,13 +16,19 @@ describe AuthenticationController, "validate token" do
 
   it "should succeed with valid token" do
     headers = {}
-    headers['Authorization'] =  <<-EOS
-      Token token="vF9dft4qmT",
-            nonce="s8djwd",
-            timestamp="137131200",
-            algorithm="hmac-sha256",
-            signature="ZSPk4B37TjHu3/yyu31LD7/agpzPjhYQEszZk7GdEfs="
-    EOS
+    # headers['Authorization'] =  <<-EOS
+    #   Token token="vF9dft4qmT",
+    #         nonce="s8djwd",
+    #         timestamp="137131200",
+    #         algorithm="hmac-sha256",
+    #         signature="ZSPk4B37TjHu3/yyu31LD7/agpzPjhYQEszZk7GdEfs="
+    # EOS
+
+    headers['authorization'] = begin
+      header = OAuth2::Headers::Authorization.new
+      header.token = 'vF9dft4qmT'
+      header.to_s
+    end
 
     token = OAuth2::AccessToken.new @client, "vF9dft4qmT"    
     resp = token.get '/', {}, headers
