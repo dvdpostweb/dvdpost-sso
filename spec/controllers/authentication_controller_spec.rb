@@ -15,22 +15,17 @@ describe AuthenticationController, "validate token" do
   end
 
   it "should succeed with valid token" do
-    headers = {}
-    # headers['Authorization'] =  <<-EOS
-    #   Token token="vF9dft4qmT",
-    #         nonce="s8djwd",
-    #         timestamp="137131200",
-    #         algorithm="hmac-sha256",
-    #         signature="ZSPk4B37TjHu3/yyu31LD7/agpzPjhYQEszZk7GdEfs="
-    # EOS
+    customer = create_customer
+    customer.reset_authentication_token!
 
+    headers = {}
     headers['authorization'] = begin
       header = OAuth2::Headers::Authorization.new
-      header.token = 'vF9dft4qmT'
+      header.token = customer.authentication_token
       header.to_s
     end
 
-    token = OAuth2::AccessToken.new @client, "vF9dft4qmT"    
+    token = OAuth2::AccessToken.new @client, customer.authentication_token
     resp = token.get '/', {}, headers
     response.status.should be 200
   end

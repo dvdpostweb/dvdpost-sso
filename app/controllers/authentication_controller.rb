@@ -33,7 +33,7 @@ class AuthenticationController < ApplicationController
 
   def authorize
     callback_uri = params[:callback_uri]
-    authenticate_user!
+    authenticate_customer!
     redirect_to callback_url
   end
 
@@ -43,7 +43,6 @@ class AuthenticationController < ApplicationController
 
   def hello
     validate_token
-    # authenticate_user!
     @hello = 'SSO is SS with an O.'
   end
 end

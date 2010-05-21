@@ -1,13 +1,10 @@
 DvdpostSso::Application.routes.draw do |map|
-  devise_for :users
+  devise_for :customers
+  get 'login',  :to => redirect('/customers/sign_in')
+  get 'logout', :to => redirect('/customers/sign_out')
 
-  devise_for :users, :path_names => {:sign_in => 'login', :sign_out => 'logout'}
-  get 'login', :to => redirect('/users/login')
-  get 'logout', :to => redirect('/users/logout')
-
-  resources :users
-
-  match 'authorize' => 'authentication#authorize'
+  match 'authorize'      => 'authentication#authorize'
+  match 'validate_token' => 'authentication#validate_token'
 
   match 'authentication/hello' => 'authentication#hello'
 
