@@ -37,13 +37,8 @@ describe AuthenticationController, "validate token" do
 end
 
 describe AuthenticationController, "authorize" do
-  before(:each) do
-    # log in as a subscriber
-    @warden = mock_warden
-  end
-
   it "should redirect to login" do
-    get 'authorize'  
+    get 'authorize'
     response.should_be redirect_to(sign_in_path)
   end
 
