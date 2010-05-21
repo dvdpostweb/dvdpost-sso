@@ -22,3 +22,25 @@ Rspec.configure do |config|
   # uncomment the following line.
   # config.use_transactional_examples = false
 end
+
+def mock_warden(authenticated=false)
+  warden = mock('warden')
+  warden.stub!("authenticate_user!").and_return(authenticated)
+  warden.stub!(:authenticate!).and_return(authenticated)
+  return warden
+end
+
+module ControllerExampleGroupBehaviour
+  %w[get post put delete head].map do |method|
+    alias_method "orig_#{method}", method
+
+    eval <<-CODE
+      def #{method}(*args)
+        action = args.shift
+        params = args.shift || {}
+        args << {'warden' => @warden}
+        orig_#{method} action, params, *args
+      end
+    CODE
+  end
+end
