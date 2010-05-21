@@ -30,15 +30,13 @@ describe AuthenticationController, "validate token" do
   end
 end
 
-describe AuthenticationController, "get token" do
+describe AuthenticationController, "authorize" do
   it "should redirect to login" do
-    get 'get_token'
+    get 'authorize'  
     response.should_be redirect_to(sign_in_path)
   end
 
-  it "should return a token after authentication" do
-    @client
-  end
+  it "should return a token after authentication"
 
   it "should redirect to the call back with original URI as param"
 end

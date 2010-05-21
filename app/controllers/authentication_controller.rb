@@ -31,8 +31,8 @@ class AuthenticationController < ApplicationController
     end
   end
 
-  def get_token
-    callback_uri = param[:callback_uri]
+  def authorize
+    callback_uri = params[:callback_uri]
     authenticate_user!
     redirect_to callback_url
   end
