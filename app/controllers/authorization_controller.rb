@@ -1,7 +1,7 @@
 require 'oauth2/server'
 require 'oauth2/server/request'
 
-class AuthenticationController < ApplicationController
+class AuthorizationController < ApplicationController
   def validate_token
     req = OAuth2::Server::Request.new do |req|
       req.realm      = "dvdpost.be"
@@ -34,7 +34,7 @@ class AuthenticationController < ApplicationController
   def authorize
     callback_uri = params[:callback_uri]
     authenticate_customer!
-    redirect_to callback_url
+    redirect_to callback_url(:code => current_customer.authentication_token)
   end
 
   def callback_uri(root_uri, token)
