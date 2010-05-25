@@ -14,7 +14,7 @@ class Customer < ActiveRecord::Base
   attr_accessible :customers_email_address, :password, :password_confirmation
 
   def valid_password?(provided_password)
-    hash_password, salt = password.split(':')
+    hash_password, salt = customers_password.split(':')
     result = Digest::MD5.hexdigest("#{salt}#{provided_password}")
     return hash_password == result
   end
