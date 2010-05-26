@@ -2,47 +2,43 @@ require 'oauth2/server'
 require 'oauth2/server/request'
 
 class AuthorizationController < ApplicationController
-  def validate_token
-    req = OAuth2::Server::Request.new do |req|
-      req.realm      = "dvdpost.be"
-      req.algorithms = 'hmac-sha256'
-
-      req.method = request.method
-
-      req.request_uri = request.fullpath
-
-      req.host_with_port = request.host + request.port.to_s
-
-      req.access_token = params['access_token']
-
-      req.access_token_expired? do
-        false
-      end
-
-      req.request_header do
-        request.authorization
-      end
-    end
-    
-    unless req.validate
-      #FIXME: NASTY, we need to adapt RSpec (mock worden or smth) 
-      warden.custom_failure! if warden
-      head :unauthorized
-    end
-  end
-
-  def authorize
-    callback_uri = params[:callback_uri]
+  def new
     authenticate_customer!
-    redirect_to callback_url(:code => current_customer.authentication_token)
+    redirect_to callback_url(params[:redirect_uri], {:code => current_customer.authentication_token})
   end
 
-  def callback_uri(root_uri, token)
-    root_uri += root_uri.matches(/\?/) ? "&code=#{token}" : "?code=#{token}"
+  def token
+    valid_token = params[:type] == 'web_server'
+    valid_token = params[:client_id] == 'dvdpost_client' if valid_token
+    valid_token = params[:client_secret] == 'dvdpost_client_secret' if valid_token
+    valid_token = params[:redirect_uri] == 'some_uri' if valid_token
+    valid_token = params[:code] == 'code generated in authorization#new' if valid_token
+
+    valid_token = true # for testing
+
+    if valid_token
+      # render :status => :ok, :json => {:access_token => 'some_access_token'}
+      # The OAuth2 gem is following an older version of the draft which requires the access_token to be returned as pure text:
+      render :status => :ok, :text => 'access_token=some_access_token'
+    else
+      render :status => :bad_request, :json => {:error => 'error_description'}
+    end
   end
 
+  # This is only used for test purposes
   def hello
-    validate_token
+    authenticate_customer!
     @hello = 'SSO is SS with an O.'
+  end
+
+  private
+  def callback_url(uri, params)
+    if params.empty?
+      uri
+    else
+      query = params.collect{|k,v| "#{k}=#{v}"}.join('&')
+      uri = "#{uri}#{uri.match(/\?/) ? '&' : '?'}"
+      "#{uri}#{query}"
+    end
   end
 end

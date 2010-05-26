@@ -3,42 +3,28 @@ require File.dirname(__FILE__) + '/../spec_helper'
 # SITE_URL = 'https://localhost:51689'
 SITE_URL = 'https://sso.dvdpost.dev'
 
-describe AuthorizationController, "validate token" do
-  before(:each) do
-    @client = OAuth2::Client.new('124896287520111', '2cfe4006f89205b088eefb7e02e89111', :site => SITE_URL)
-  end
-
-  it "should redirect to login with invalid credentials" do
-    get 'hello'
-
-    response.status.should be 401
-  end
-
-  it "should succeed with valid token" do
-    customer = create_customer
-    customer.reset_authentication_token!
-
-    headers = {}
-    headers['authorization'] = begin
-      header = OAuth2::Headers::Authorization.new
-      header.token = customer.authentication_token
-      header.to_s
-    end
-
-    token = OAuth2::AccessToken.new @client, customer.authentication_token
-    resp = token.get '/', {}, headers
-    response.status.should be 200
-  end
-end
-
 describe AuthorizationController, "Authorization" do
+  before(:each) do
+    @client ||= OAuth2::Client.new( 'dvdpost_client',
+                                    'dvdpost_client_secret',
+                                    :site => SITE_URL,
+                                    :authorize_path => 'authorization/new',
+                                    :access_token_path => 'authorization/token')
+    @redirect_uri ||= 'http://www.dvdpost.be/callback'
+  end
+
   context "Client requests authorization" do
     it "should redirect to login when not authenticated" do
-      get 'authorize'
+      # Specs currently fail
+      Net::HTTP.get(URI.parse(@client.web_server.authorize_url(:redirect_uri => @redirect_uri)))
+      puts response
       response.should_be redirect_to(sign_in_path)
     end
 
-    it "should return a token when authenticated"
+    it "should return a token when authenticated" do
+      Net::HTTP.get(URI.parse(@client.web_server.authorize_url(:redirect_uri => @redirect_uri)))
+      response.should_be redirect_to(@redirect_uri)
+    end
 
     it "should return error=user_denied if user denied"
 
