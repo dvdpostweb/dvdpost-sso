@@ -18,4 +18,9 @@ class Customer < ActiveRecord::Base
     result = Digest::MD5.hexdigest("#{salt}#{provided_password}")
     return hash_password == result
   end
+
+  def generate_verification_code!
+    update_attribute(:verification_code, Digest::SHA1.hexdigest("dvdpost_secret_for#{email}_at_#{Time.now}"))
+    verification_code
+  end
 end

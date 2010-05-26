@@ -5,8 +5,8 @@ require 'oauth2'
 require 'json'
 
 def client
-  @client ||= OAuth2::Client.new( 'client_id',
-                                  'client_secret_NOT_REQUIRED',
+  @client ||= OAuth2::Client.new( 'dvdpost_client',
+                                  'dvdpost_client_secret',
                                   :site => 'https://sso.dvdpost.dev',
                                   :authorize_path => 'authorization/new',
                                   :access_token_path => 'authorization/token')
@@ -18,6 +18,7 @@ end
 
 get '/callback' do
   access_token = client.web_server.get_access_token(params[:code], :redirect_uri => redirect_uri)
+  # At this point we should store the access_token.token to the database
   redirect "test?token=#{access_token.token}" # Internal redirect to directly make a test call to the SSO
 end
 
