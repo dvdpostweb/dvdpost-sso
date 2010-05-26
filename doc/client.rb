@@ -19,13 +19,14 @@ end
 get '/callback' do
   access_token = client.web_server.get_access_token(params[:code], :redirect_uri => redirect_uri)
   # At this point we should store the access_token.token to the database
-  redirect "test?token=#{access_token.token}" # Internal redirect to directly make a test call to the SSO
+  redirect "me?token=#{access_token.token}" # Internal redirect to directly make a test call to the SSO
 end
 
-get '/test' do
+get '/me' do
   # This one still fails at the moment.
   access_token = OAuth2::AccessToken.new(client, params[:token])
-  content = access_token.get('/hello')
+  content = access_token.get('/me')
+  puts JSON.parse(content)['id']
 end
 
 def redirect_uri

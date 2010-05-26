@@ -2,7 +2,7 @@ require 'oauth2/server'
 require 'oauth2/server/request'
 
 class AuthorizationController < ApplicationController
-  before_filter :verify_token, :except => [:new, :token, :callback_url]
+  before_filter :verify_token, :only => [:me]
 
   def new
     authenticate_customer!
@@ -25,13 +25,13 @@ class AuthorizationController < ApplicationController
     end
   end
 
-  # This is only used for test purposes
-  def hello
-    @hello = 'SSO is SS with an O.'
+  def me
+    render :status => :ok, :json => {:id => current_customer.to_param}
   end
 
   private
   def verify_token
+    current_customer = nil
     # Actually we could have used authenticate_customer! in here since it can validate by the access_token
     # But that would redirect us to the login page which is against the specifications of OAuth2
     # This actually should be oauth_token
@@ -39,10 +39,12 @@ class AuthorizationController < ApplicationController
     if oauth_token
       current_customer = Customer.find_by_authentication_token(oauth_token)
       unless current_customer
-        head :unauthorized
+        warden.custom_failure!
+        render :status => :unauthorized, :json => {:error => 'error_description'}
       end
     else
-      head :unauthorized
+      warden.custom_failure!
+      render :status => :unauthorized, :json => {:error => 'error_description'}
     end
   end
 

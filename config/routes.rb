@@ -6,6 +6,6 @@ DvdpostSso::Application.routes.draw do |map|
   get  'authorization/new'   => 'authorization#new'
   post 'authorization/token' => 'authorization#token'
 
-  get 'hello', :to => 'authorization#hello' # For test purposes
-  root :to => 'authorization#hello'
+  get 'me', :to => 'authorization#me' # For test purposes
+  root :to => 'authorization#me'
 end
