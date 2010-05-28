@@ -20,7 +20,7 @@ set :rails_env, "staging"
 #############################################################
 
 set :user, "sso"
-set :domain, "staging.dvdpost.be" # "staging.sso.dvdpost.be"
+set :domain, "staging.sso.dvdpost.be"
 set :port, 22012
 server domain, :app, :web
 role :db, domain, :primary => true
