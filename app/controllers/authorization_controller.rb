@@ -19,7 +19,7 @@ class AuthorizationController < ApplicationController
     if valid_authentication 
       # render :status => :ok, :json => {:access_token => 'some_access_token'}
       # The OAuth2 gem is following an older version of the draft which requires the access_token to be returned as pure text:
-      render :status => :ok, :text => "access_token=#{Customer.find_by_customers_email_address('jj@redstorm.be').authentication_token}"
+      render :status => :ok, :text => "access_token=#{Customer.find_by_verification_code(params[:code].authentication_token}"
     else
       render :status => :bad_request, :json => {:error => 'error_description'}
     end
