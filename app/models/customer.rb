@@ -6,9 +6,7 @@ class Customer < ActiveRecord::Base
   alias_attribute :email, :customers_email_address
   alias_attribute :password, :customers_password
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :token_authenticatable
+  devise :database_authenticatable, :registerable, :recoverable, :validatable, :token_authenticatable #, :rememberable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :customers_email_address, :password, :password_confirmation
