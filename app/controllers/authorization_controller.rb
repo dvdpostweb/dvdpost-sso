@@ -10,19 +10,23 @@ class AuthorizationController < ApplicationController
   end
 
   def token
-    valid_authentication = params[:type] == 'web_server'
-    valid_authentication = params[:client_id] == 'dvdpost_client' if valid_authentication
-    # valid_authentication = params[:client_secret] == 'dvdpost_client_secret' if valid_authentication  # => not required
-    # valid_authentication = params[:redirect_uri] == 'some_uri' if valid_authentication                # => not required
-    customer = Customer.find_by_verification_code(params[:code]) if params[:code] && valid_authentication
-    valid_authentication = customer if valid_authentication
-
-    if valid_authentication 
-      # render :status => :ok, :json => {:access_token => 'some_access_token'}
-      # The OAuth2 gem is following an older version of the draft which requires the access_token to be returned as pure text:
-      render :status => :ok, :text => "access_token=#{customer.authentication_token}"
+    if params[:type] == 'web_server'
+      if params[:client_id] == 'dvdpost_client'
+        # params[:client_secret] == 'dvdpost_client_secret' # => not required
+        # params[:redirect_uri] == 'some_uri'               # => not required (error code = redirect_uri_mismatch)
+        customer = Customer.find_by_verification_code(params[:code])
+        if customer && customer.reset_authentication_token!
+          # render :status => :ok, :json => {:access_token => 'some_access_token'}
+          # The OAuth2 gem is following an older version of the draft which requires the access_token to be returned as pure text:
+          render :status => :ok, :text => "access_token=#{customer.authentication_token}"
+        else
+          render_bad_request 'There was a problem trying to retrieve a new token'
+        end
+      else
+        render_bad_request 'client_id_mismatch'
+      end
     else
-      render :status => :bad_request, :json => {:error => 'There was an error trying to retrieve a new token'}
+      render_bad_request 'unsupported_type'
     end
   end
 
@@ -41,11 +45,11 @@ class AuthorizationController < ApplicationController
       current_customer = Customer.find_by_authentication_token(oauth_token)
       unless current_customer
         warden.custom_failure!
-        render :status => :unauthorized, :json => {:error => 'Invalid token'}
+        render_unauthorized 'invalid_token'
       end
     else
       warden.custom_failure!
-      render :status => :unauthorized, :json => {:error => 'There was no token'}
+      render_unauthorized 'invalid_token'
     end
   end
 
@@ -57,5 +61,17 @@ class AuthorizationController < ApplicationController
       uri = "#{uri}#{uri.match(/\?/) ? '&' : '?'}"
       "#{uri}#{query}"
     end
+  end
+
+  def render_unauthorized(message)
+    render_error :unauthorized, message
+  end
+
+  def render_bad_request(message)
+    render_error :bad_request, message
+  end
+
+  def render_error(status, message)
+    render :status => status, :json => {:error => message}
   end
 end
