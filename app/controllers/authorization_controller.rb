@@ -14,12 +14,13 @@ class AuthorizationController < ApplicationController
     valid_authentication = params[:client_id] == 'dvdpost_client' if valid_authentication
     # valid_authentication = params[:client_secret] == 'dvdpost_client_secret' if valid_authentication  # => not required
     # valid_authentication = params[:redirect_uri] == 'some_uri' if valid_authentication                # => not required
-    valid_authentication = (params[:code] && Customer.find_by_verification_code(params[:code])) if valid_authentication
+    customer = Customer.find_by_verification_code(params[:code]) if params[:code] && valid_authentication
+    valid_authentication = customer if valid_authentication
 
     if valid_authentication 
       # render :status => :ok, :json => {:access_token => 'some_access_token'}
       # The OAuth2 gem is following an older version of the draft which requires the access_token to be returned as pure text:
-      render :status => :ok, :text => "access_token=#{Customer.find_by_verification_code(params[:code].authentication_token}"
+      render :status => :ok, :text => "access_token=#{customer.authentication_token}"
     else
       render :status => :bad_request, :json => {:error => 'error_description'}
     end
