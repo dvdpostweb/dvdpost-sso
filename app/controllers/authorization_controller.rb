@@ -22,7 +22,7 @@ class AuthorizationController < ApplicationController
       # The OAuth2 gem is following an older version of the draft which requires the access_token to be returned as pure text:
       render :status => :ok, :text => "access_token=#{customer.authentication_token}"
     else
-      render :status => :bad_request, :json => {:error => 'error_description'}
+      render :status => :bad_request, :json => {:error => 'There was an error trying to retrieve a new token'}
     end
   end
 
@@ -41,11 +41,11 @@ class AuthorizationController < ApplicationController
       current_customer = Customer.find_by_authentication_token(oauth_token)
       unless current_customer
         warden.custom_failure!
-        render :status => :unauthorized, :json => {:error => 'error_description'}
+        render :status => :unauthorized, :json => {:error => 'Invalid token'}
       end
     else
       warden.custom_failure!
-      render :status => :unauthorized, :json => {:error => 'error_description'}
+      render :status => :unauthorized, :json => {:error => 'There was no token'}
     end
   end
 
