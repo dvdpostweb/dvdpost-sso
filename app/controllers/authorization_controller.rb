@@ -34,6 +34,12 @@ class AuthorizationController < ApplicationController
     render :status => :ok, :json => {:id => current_customer.to_param}
   end
 
+  def logout
+    current_customer.destroy_token!
+    sign_out(current_customer)
+    redirect_to 'http://www.dvdpost.be'
+  end
+
   private
   def verify_token
     current_customer = nil

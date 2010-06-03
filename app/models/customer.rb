@@ -21,4 +21,9 @@ class Customer < ActiveRecord::Base
     update_attribute(:verification_code, Digest::SHA1.hexdigest("dvdpost_secret_for#{email}_at_#{Time.now}"))
     verification_code
   end
+
+  def destroy_token!
+    update_attribute(:verification_code, nil)
+    update_attribute(:authentication_token, nil)
+  end
 end
