@@ -1,0 +1,55 @@
+<div id="header" >
+  <h1><%= link_to t('.tagline'), root_path, :class => 'like-btn' %></h1>
+  <ul id="login" class="subnav">
+    <li class="first">
+      <% if current_customer %>
+        <%= "#{link_to t('.logout'), logout_path} (#{current_customer.email})" %>
+      <% else %>
+        <%= link_to t('.login'), sign_in_path %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to t('.help'), faq_path %>
+    </li>
+    <li>
+      <%= switch_locale_link I18n.locale, {:id => 'lang'} %>
+      <span id="lang-box">
+        <% Locale.all.collect(&:short).collect do |locale| %>
+          <%= switch_locale_link locale unless locale.to_s == I18n.locale.to_s %>
+        <% end %>
+      </span>
+    </li>
+  </ul>
+  <ul id="subnav" class="subnav">
+    <li class="first">
+      <a href="#">
+        <strong><%= t '.rent' %></strong>
+      </a>
+    </li>
+    <li>
+      <a href="http://www.dvdpost.be/mydvdxpost.php">
+        <%= t '.adult' %>
+      </a>
+    </li>
+    <li>
+      <a href="http://www.dvdpost.be/mydvdshop.php" id="cart">
+        <%= t '.buy' %>
+      </a>
+    </li>
+  </ul>
+  <ul id="nav">
+    <li><%= link_to t('.home'), root_path, {:id => 'n1'} %></li>
+    <li><%= link_to t('.explore'), products_path, {:id => 'n2'} %></li>
+    <li><%= link_to t('.wishlist'), wishlist_path, {:id => 'n3'} %></li>
+    <li>
+      <% link_to messages_path, {:id => 'n4'} do %>
+        <%= t '.contact' %><span><%= @messages_size %></span>
+      <% end %>
+    </li>
+    <li><%= link_to 'compte', customer_path(:id => current_customer), {:id => 'n5'} %></li>
+    <li><%= link_to t('.news'), nil, {:id => 'n6'} %></li>
+    <li id="indicator">
+      <%= render :partial => 'layouts/list_indicator', :locals => {:wishlist_size => @wishlist_size} %>
+    </li>
+  </ul>
+</div>

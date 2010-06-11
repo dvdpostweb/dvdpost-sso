@@ -6,11 +6,19 @@
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
+
+
+
 <body>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-
-<%= yield %>
-
-</body>
+  <div id="wrap">
+    <!--   ==============   HEADER   ==============   -->
+    <%= render :partial => 'layouts/header' %>
+    <!--   ==============   END HEADER   ==============   -->
+    <div class="container clearfix">
+      <%= flash[:notice] %>
+      <%= yield %>
+    </div>
+  </body>
 </html>
