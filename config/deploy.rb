@@ -1,5 +1,5 @@
 set :stages, %w(staging production)
-set :default_stage, "staging"
+set :default_stage, 'staging'
 require 'capistrano/ext/multistage'
 
 namespace :deploy do
@@ -8,4 +8,4 @@ namespace :deploy do
   end
 end
 
-after "deploy:symlink", "deploy:bundle_gems"
+after 'deploy:symlink', 'deploy:bundle_gems'
