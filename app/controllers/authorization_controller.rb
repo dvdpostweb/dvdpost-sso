@@ -1,6 +1,3 @@
-require 'oauth2/server'
-require 'oauth2/server/request'
-
 class AuthorizationController < ApplicationController
   before_filter :verify_token, :only => [:me]
 
