@@ -13,9 +13,7 @@ class AuthorizationController < ApplicationController
         # params[:redirect_uri] == 'some_uri'               # => not required (error code = redirect_uri_mismatch)
         customer = Customer.find_by_verification_code(params[:code])
         if customer && customer.reset_authentication_token!
-          # render :status => :ok, :json => {:access_token => 'some_access_token'}
-          # The OAuth2 gem is following an older version of the draft which requires the access_token to be returned as pure text:
-          render :status => :ok, :text => "access_token=#{customer.authentication_token}"
+          render :status => :ok, :json => {:access_token => customer.authentication_token}
         else
           render_bad_request 'There was a problem trying to retrieve a new token'
         end
