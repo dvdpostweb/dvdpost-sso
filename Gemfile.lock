@@ -7,7 +7,7 @@ dependencies:
   rspec-rails: 
     group: 
     - :test
-    version: ">= 2.0.0.beta.8"
+    version: ">= 2.0.0.beta.12"
   devise: 
     group: 
     - :default
@@ -92,7 +92,7 @@ specs:
     version: 0.7.1
 - rspec-rails: 
     version: 2.0.0.beta.12
-hash: 68fb09ab73e755f8174d970911563c7a06130c6d
+hash: 51feeadf054ecbbd081c3ba5755e9026ebfe7aec
 sources: 
 - Git: 
     uri: git://github.com/jeroenj/devise.git
