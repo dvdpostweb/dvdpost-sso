@@ -48,7 +48,7 @@ specs:
 - treetop: 
     version: 1.4.8
 - mail: 
-    version: 2.2.4
+    version: 2.2.5
 - actionmailer: 
     version: 3.0.0.beta4
 - arel: 
@@ -70,10 +70,12 @@ specs:
     version: 1.1.2
 - faraday: 
     version: 0.4.6
+- multi_json: 
+    version: 0.0.3
 - nokogiri: 
     version: 1.4.2
 - oauth2: 
-    version: 0.0.8
+    version: 0.0.9
 - thor: 
     version: 0.13.6
 - railties: 
@@ -98,6 +100,6 @@ sources:
     uri: git://github.com/jeroenj/devise.git
     branch: legacy
     git: git://github.com/jeroenj/devise.git
-    ref: 68368e99161480945c0cbfb2e426f5d5f9bd74fb
+    ref: 55b7fda8566aa2e2ca0f2877c5609461f8d043fc
 - Rubygems: 
     uri: http://rubygems.org
