@@ -52,14 +52,12 @@ class AuthorizationController < ApplicationController
   end
 
   def verify_token
-    current_customer = nil
     # Actually we could have used authenticate_customer! in here since it can validate by the access_token
     # But that would redirect us to the login page which is against the specifications of OAuth2
     # This actually should be oauth_token
     oauth_token = params[:access_token]
     if oauth_token
-      current_customer = Customer.find_by_authentication_token(oauth_token)
-      unless current_customer
+      unless current_customer == Customer.find_by_authentication_token(oauth_token)
         warden.custom_failure!
         render_unauthorized 'invalid_token'
       end
