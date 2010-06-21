@@ -56,6 +56,9 @@ class AuthorizationController < ApplicationController
   end
 
   def generate_and_return_tokens(customer)
+    # If there is a current_customer we should do update_tokens!
+    # If not we should use generate_tokens!
+    logger.info current_customer.inspect # for some reason current_customer is nil when Accept is set to */* in the http headers
     if customer && customer.update_tokens!
       logger.info 'everything went well'
       render :status => :ok, :json => {:access_token => customer.authentication_token, :expires_in => customer.access_token_expires_in, :refresh_token => customer.refresh_token}
