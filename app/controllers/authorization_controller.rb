@@ -8,11 +8,13 @@ class AuthorizationController < ApplicationController
 
   def token
     if params[:client_id] == 'dvdpost_client'
+      # params[:client_secret] == 'dvdpost_client_secret' # => not required
+      # params[:redirect_uri] == 'some_uri'               # => not required (error code = redirect_uri_mismatch)
       case params[:grant_type]
-      when 'authorization_code' then authorization_code(params)
-      when 'refresh_token'      then refresh_token(params)
-      else render_bad_request 'unsupported_grant_type'
-      end  
+        when 'authorization_code' then authorization_code(params)
+        when 'refresh_token'      then refresh_token(params)
+        else render_bad_request 'unsupported_grant_type'
+      end
     else
       render_bad_request 'client_id_mismatch'
     end
@@ -23,32 +25,20 @@ class AuthorizationController < ApplicationController
   end
 
   def logout
-    current_customer.destroy_token!
+    current_customer.destroy_tokens!
     sign_out(current_customer)
     redirect_to 'http://www.dvdpost.be'
   end
 
   private
   def authorization_code(params)
-    # params[:client_secret] == 'dvdpost_client_secret' # => not required
-    # params[:redirect_uri] == 'some_uri'               # => not required (error code = redirect_uri_mismatch)
     customer = Customer.find_by_verification_code(params[:code])
-    if customer && customer.reset_authentication_token!
-      render :status => :ok, :json => {:access_token => customer.authentication_token, :expires_in => 1209600, :refresh_token => customer.remember_token}
-    else
-      render_bad_request 'There was a problem trying to retrieve a new token.'
-    end
+    generate_and_return_tokens(customer)
   end
 
   def refresh_token(params)
-    customer = Customer.find_by_remember_token(params[:refresh_token])
-    if customer
-      logger.info "*** Should generate a new access token here! ***"
-      # Generate a new access token
-      render :status => :ok, :json => {:access_token => customer.authentication_token, :expires_in => 1209600, :refresh_token => customer.remember_token}
-    else
-      render_bad_request 'There was a problem trying to retrieve a new token.'
-    end
+    customer = Customer.find_by_refresh_token(params[:refresh_token])
+    generate_and_return_tokens(customer)
   end
 
   def verify_token
@@ -58,26 +48,25 @@ class AuthorizationController < ApplicationController
     oauth_token = params[:access_token]
     if oauth_token
       unless current_customer == Customer.find_by_authentication_token(oauth_token)
-        warden.custom_failure!
-        render_unauthorized 'invalid_token'
+        render_unauthorized
       end
     else
-      warden.custom_failure!
-      render_unauthorized 'invalid_token'
+      render_unauthorized
     end
   end
 
-  def callback_url(uri, params)
-    if params.empty?
-      uri
+  def generate_and_return_tokens(customer)
+    if customer && customer.update_tokens!
+      logger.info 'everything went well'
+      render :status => :ok, :json => {:access_token => customer.authentication_token, :expires_in => customer.access_token_expires_in, :refresh_token => customer.refresh_token}
     else
-      query = params.collect{|k,v| "#{k}=#{v}"}.join('&')
-      uri = "#{uri}#{uri.match(/\?/) ? '&' : '?'}"
-      "#{uri}#{query}"
+      logger.info 'there were problems'
+      render_bad_request 'There was a problem trying to retrieve the token.'
     end
   end
 
-  def render_unauthorized(message)
+  def render_unauthorized(message='invalid_token')
+    warden.custom_failure!
     render_error :unauthorized, message
   end
 
