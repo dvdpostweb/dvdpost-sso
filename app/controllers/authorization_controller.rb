@@ -59,8 +59,9 @@ class AuthorizationController < ApplicationController
   def verify_token
     oauth_token = params[:oauth_token] || params[:access_token] # Current client gem does not support oauth_token yet
     if oauth_token
-      if current_customer == Customer.find_by_authentication_token(oauth_token)
-        render_unauthorized :authroziation_expired if current_customer.access_token_expired?
+      customer = Customer.find_by_authentication_token(oauth_token)
+      if customer
+        render_unauthorized :authroziation_expired if customer.access_token_expired?
       else
         render_unauthorized :invalid_access_token
       end
