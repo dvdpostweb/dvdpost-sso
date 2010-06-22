@@ -9,7 +9,7 @@ enable :sessions
 def client
   @client ||= OAuth2::Client.new( 'dvdpost_client',
                                   'dvdpost_client_secret',
-                                  :site => 'http://sso.dvdpost.dev:60751',
+                                  :site => 'http://sso.dvdpost.dev',
                                   :authorize_path => 'authorization/new',
                                   :access_token_path => 'authorization/token')
 end
