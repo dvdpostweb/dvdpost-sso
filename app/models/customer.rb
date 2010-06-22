@@ -22,11 +22,8 @@ class Customer < ActiveRecord::Base
     verification_code
   end
 
-  def generate_tokens!
-    reset_access_token! and reset_refresh_token!
-  end
-
   def update_tokens!
+    destroy_attribute :verification_code
     reset_access_token! if access_token_expired?
     reset_refresh_token! if refresh_token_expired?
     true
@@ -38,8 +35,8 @@ class Customer < ActiveRecord::Base
   end
 
   def reset_refresh_token!
-    update_attribute(:refresh_token, Digest::SHA1.hexdigest("dvdpost_secret_for_#{email}_at_#{Time.now}_which_expires_at_#{1.month.from_now}"))
-    update_attribute(:refresh_token_expires_at, 1.month.from_now) if remember_token?
+    update_attribute(:refresh_token, Digest::SHA1.hexdigest("dvdpost_secret_for_#{email}_at_#{Time.now}_which_expires_at_#{10.years.from_now}"))
+    update_attribute(:refresh_token_expires_at, 10.years.from_now) if remember_token? # 10 years as in "unlimited" (yes I know, it's nasty)
   end
 
   def access_token_expired?
@@ -55,10 +52,15 @@ class Customer < ActiveRecord::Base
   end
 
   def destroy_tokens!
-    update_attribute(:verification_code, nil)
-    update_attribute(:authentication_token, nil)
-    update_attribute(:refresh_token, nil)
-    update_attribute(:refresh_token_expires_at, nil)
-    update_attribute(:access_token_expires_at, nil)
+    destroy_attribute :verification_code
+    destroy_attribute :authentication_token
+    destroy_attribute :refresh_token
+    destroy_attribute :refresh_token_expires_at
+    destroy_attribute :access_token_expires_at
+  end
+
+  private
+  def destroy_attribute(attr)
+    update_attribute(attr, nil)
   end
 end
