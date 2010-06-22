@@ -4,10 +4,12 @@ require 'sinatra'
 require 'oauth2'
 require 'json'
 
+enable :sessions
+
 def client
   @client ||= OAuth2::Client.new( 'dvdpost_client',
                                   'dvdpost_client_secret',
-                                  :site => 'https://sso.dvdpost.dev',
+                                  :site => 'http://sso.dvdpost.dev:60751',
                                   :authorize_path => 'authorization/new',
                                   :access_token_path => 'authorization/token')
 end
@@ -19,14 +21,25 @@ end
 get '/callback' do
   access_token = client.web_server.get_access_token(params[:code], :redirect_uri => redirect_uri)
   # At this point we should store the access_token.token to the database
+  session[:oauth_token] = access_token.token
+  session[:expires_in] = access_token.expires_in
+  session[:refresh_token] = access_token.refresh_token
+  puts "*** Session: #{session.inspect} ***"
   redirect "me?token=#{access_token.token}" # Internal redirect to directly make a test call to the SSO
 end
 
 get '/me' do
-  # This one still fails at the moment.
   access_token = OAuth2::AccessToken.new(client, params[:token])
-  content = access_token.get('/me')
-  puts JSON.parse(content)['id']
+  content = access_token.get('/me') # This sends access_token in the params, but that should be oauth_token
+  puts "*** customer_id = #{JSON.parse(content)['id']} ***"
+end
+
+get '/refresh' do
+  access_token = client.web_server.refresh_access_token(session[:refresh_token], :redirect_uri => redirect_uri)
+  session[:oauth_token] = access_token.token
+  session[:expires_in] = access_token.expires_in
+  session[:refresh_token] = access_token.refresh_token
+  puts "*** Session: #{session.inspect} ***"
 end
 
 def redirect_uri
