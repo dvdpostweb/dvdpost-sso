@@ -8,14 +8,22 @@ dependencies:
     group: 
     - :test
     version: ">= 2.0.0.beta.12"
+  json: 
+    group: 
+    - :test
+    version: ">= 0"
   devise: 
     group: 
     - :default
     version: ">= 0"
+  sinatra: 
+    group: 
+    - :test
+    version: ~> 1.0
   oauth2: 
     group: 
     - :test
-    version: ">= 0.0.8"
+    version: ">= 0"
 specs: 
 - rake: 
     version: 0.8.7
@@ -34,7 +42,7 @@ specs:
 - rack: 
     version: 1.1.0
 - rack-mount: 
-    version: 0.6.4
+    version: 0.6.6
 - rack-test: 
     version: 0.5.4
 - tzinfo: 
@@ -59,23 +67,28 @@ specs:
     version: 3.0.0.beta4
 - addressable: 
     version: 2.1.2
+- bcrypt-ruby: 
+    version: 2.1.2
 - bundler: 
     version: 0.9.26
 - warden: 
     version: 0.10.7
 - devise: 
     version: 1.1.rc1
-    source: 0
+    source: 1
 - diff-lcs: 
     version: 1.1.2
 - faraday: 
     version: 0.4.6
+- json: 
+    version: 1.4.3
 - multi_json: 
-    version: 0.0.3
+    version: 0.0.4
 - nokogiri: 
     version: 1.4.2
 - oauth2: 
-    version: 0.0.9
+    version: 0.0.10
+    source: 0
 - thor: 
     version: 0.13.6
 - railties: 
@@ -94,12 +107,18 @@ specs:
     version: 0.7.1
 - rspec-rails: 
     version: 2.0.0.beta.12
-hash: 51feeadf054ecbbd081c3ba5755e9026ebfe7aec
+- sinatra: 
+    version: "1.0"
+hash: b15dca9d7bc0eaf09d3227083a5014c2f6ddcf14
 sources: 
+- Git: 
+    uri: git://github.com/jeroenj/oauth2.git
+    git: git://github.com/jeroenj/oauth2.git
+    ref: 8f95c764fcad62b9e2895c400068113a3e39c233
 - Git: 
     uri: git://github.com/jeroenj/devise.git
     branch: legacy
     git: git://github.com/jeroenj/devise.git
-    ref: 55b7fda8566aa2e2ca0f2877c5609461f8d043fc
+    ref: ab165cc58d986595894db53ac9da07e565ba6498
 - Rubygems: 
     uri: http://rubygems.org
