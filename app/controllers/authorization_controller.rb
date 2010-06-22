@@ -74,7 +74,7 @@ class AuthorizationController < ApplicationController
     if customer && customer.update_tokens!
       render :status => :ok, :json => {:access_token => customer.authentication_token, :expires_in => customer.access_token_expires_in, :refresh_token => customer.refresh_token}
     else
-      render_bad_request error_message
+      render_unauthorized error_message
     end
   end
 
