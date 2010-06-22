@@ -88,6 +88,7 @@ class AuthorizationController < ApplicationController
   end
 
   def render_error(status, message)
+    logger.error "*** Error: #{status} => #{message} ***"
     render :status => status, :json => {:error => message}
   end
 end
