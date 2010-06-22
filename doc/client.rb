@@ -35,7 +35,7 @@ get '/me' do
 end
 
 get '/refresh' do
-  access_token = client.web_server.refresh_access_token(session[:refresh_token], :redirect_uri => redirect_uri)
+  access_token = client.web_server.refresh_access_token(session[:refresh_token])
   session[:oauth_token] = access_token.token
   session[:expires_in] = access_token.expires_in
   session[:refresh_token] = access_token.refresh_token
