@@ -1,24 +1,23 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-# SITE_URL = 'http://localhost:60751'
-SITE_URL = 'https://sso.dvdpost.dev'
-
 describe AuthorizationController, "Authorization" do
   include Devise::TestHelpers
 
   before(:each) do
     @type ||= 'web_server'
     @client_id ||= 'dvdpost_client'
+    @client_secret ||= 'dvdpost_client_secret'
     @redirect_uri ||= 'http://dvdpost.dev/callback'
 
     @invalid_type ||= 'invalid_type'
     @invalid_client_id ||= 'invalid_client_id'
+    @invalid_client_id ||= 'invalid_client_secret'
     @invalid_redirect_uri ||= 'http://my_hack_site.dev/callback'
     @malformed_redirect_uri ||= 'malformed://dvdpost.dev/callback'
 
     @valid_start_params ||= {:type => @type, :client_id => @client_id, :redirect_uri => @redirect_uri}
-    @valid_authorization_code_params ||= {:client_id => @client_id, :grant_type => 'authorization_code', :redirect_uri => @redirect_uri}
-    @valid_refresh_token_params ||= {:client_id => @client_id, :grant_type => 'refresh_token'}
+    @valid_authorization_code_params ||= {:grant_type => 'authorization_code', :client_id => @client_id, :redirect_uri => @redirect_uri}
+    @valid_refresh_token_params ||= {:grant_type => 'refresh_token', :client_id => @client_id}
   end
 
   context "new" do
@@ -41,10 +40,25 @@ describe AuthorizationController, "Authorization" do
     end
 
     it "should throw an error 'invalid_client_credentials' if an invalid client_id was given" do
-      get :new, :client_id => @invalid_client_id, :type => @type, :redirect_uri => @redirect_uri
+      get :new, :type => @type, :client_id => @invalid_client_id, :redirect_uri => @redirect_uri
       response.should be_bad_request
       JSON.parse(response.body)['error'].should == 'invalid_client_credentials'
     end
+
+    it "should throw an error 'invalid_client_credentials' if no client_secret was given" do
+      pending "client_secret's are not yet implemented"
+      get :new, :type => @type, :client_id => @client_id, :redirect_uri => @redirect_uri
+      response.should be_bad_request
+      JSON.parse(response.body)['error'].should == 'invalid_client_credentials'
+    end
+
+    it "should throw an error 'invalid_client_credentials' if an invalid client_id was given" do
+      pending "client_secret's are not yet implemented"
+      get :new, :type => @type, :client_id => @client_id, :client_secret => @invalid_client_secret, :redirect_uri => @redirect_uri
+      response.should be_bad_request
+      JSON.parse(response.body)['error'].should == 'invalid_client_credentials'
+    end
+
 
     it "should throw an error 'redirect_uri_mismatch' if no redirect_uri was given" do
       get :new, :type => @type, :client_id => @client_id
@@ -83,8 +97,32 @@ describe AuthorizationController, "Authorization" do
       JSON.parse(response.body)['error'].should == 'invalid_client_credentials'
     end
 
+    it "should throw an error 'invalid_client_credentials' if an invalid client_id was given" do
+      post :token, :client_id => @invalid_client_id
+      response.should be_bad_request
+      JSON.parse(response.body)['error'].should == 'invalid_client_credentials'
+    end
+
+    it "should throw an error 'invalid_client_credentials' if no client_secret was given" do
+      post :token
+      response.should be_bad_request
+      JSON.parse(response.body)['error'].should == 'invalid_client_credentials'
+    end
+
+    it "should throw an error 'invalid_client_credentials' if an invalid client_secret was given" do
+      post :token, :client_secret => @invalid_secret
+      response.should be_bad_request
+      JSON.parse(response.body)['error'].should == 'invalid_client_credentials'
+    end
+
     it "should throw an error 'unsupported_grant_type' if no grant_type was given" do
       post :token, :client_id => @client_id
+      response.should be_bad_request
+      JSON.parse(response.body)['error'].should == 'unsupported_grant_type'
+    end
+
+    it "should throw an error 'unsupported_grant_type' if an invalid grant_type was given" do
+      post :token, :client_id => @client_id, :grant_type => 'invalid_grant_type'
       response.should be_bad_request
       JSON.parse(response.body)['error'].should == 'unsupported_grant_type'
     end
@@ -92,7 +130,7 @@ describe AuthorizationController, "Authorization" do
 
   context "generate a new token with an authorization code" do
     it "should throw an error 'redirect_uri_mismatch' if no redirect_uri was given" do
-      post :token, :client_id => @client_id, :grant_type => 'authorization_code'
+      post :token, :grant_type => 'authorization_code', :client_id => @client_id
       response.should be_bad_request
       JSON.parse(response.body)['error'].should == 'redirect_uri_mismatch'
     end
