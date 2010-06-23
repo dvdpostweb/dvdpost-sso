@@ -18,6 +18,7 @@ describe AuthorizationController, "Authorization" do
 
     @valid_start_params ||= {:type => @type, :client_id => @client_id, :redirect_uri => @redirect_uri}
     @valid_authorization_code_params ||= {:client_id => @client_id, :grant_type => 'authorization_code', :redirect_uri => @redirect_uri}
+    @valid_refresh_token_params ||= {:client_id => @client_id, :grant_type => 'refresh_token'}
   end
 
   context "new" do
@@ -114,23 +115,57 @@ describe AuthorizationController, "Authorization" do
   end
 
   context "generate a new token with a refresh token" do
+    it "should thrown an error 'invalid_refresh_token' if no refresh_token was given" do
+      pending "Fails because this requires access to the database we cannot provide because of this legacy database"
+      post :token, @valid_refresh_token_params
+      response.should be_bad_request
+      JSON.parse(response.body)['error'].should == 'invalid_refresh_token'
+    end
+
     it "should thrown an error 'invalid_refresh_token' if an incorrect refresh_token was given" do
       pending "Fails because this requires access to the database we cannot provide because of this legacy database"
-      post :token, @valid_authorization_code_params.merge(:refresh_token => 'invalid_refresh_token')
+      post :token, @valid_refresh_token_params.merge(:refresh_token => 'invalid_refresh_token')
       response.should be_bad_request
       JSON.parse(response.body)['error'].should == 'invalid_refresh_token'
     end
 
     it "should thrown an error 'invalid_refresh_token' if an expired refresh_token was given" do
       pending "Fails because this requires access to the database we cannot provide because of this legacy database"
-      post :token, @valid_authorization_code_params.merge(:refresh_token => 'expired_refresh_token')
+      post :token, @valid_refresh_token_params.merge(:refresh_token => 'expired_refresh_token')
       response.should be_bad_request
       JSON.parse(response.body)['error'].should == 'invalid_refresh_token'
     end
 
     it "should return an access token, refresh token and expiry date if a correct refresh_token was given" do
       pending "Fails because this requires access to the database we cannot provide because of this legacy database"
-      post :token, @valid_authorization_code_params.merge(:refresh_token => 'valid_refresh_token')
+      post :token, @valid_refresh_token_params.merge(:refresh_token => 'valid_refresh_token')
+    end
+  end
+
+  context "get customer's id after verifying the request" do
+    it "should throw an error 'invalid_access_token' if no oauth_token was given" do
+      get :me
+      response.should be_bad_request
+      JSON.parse(response.body)['error'].should == 'invalid_access_token'
+    end
+
+    it "should throw an error 'invalid_access_token' if an invalid oauth_token was given" do
+      pending "Fails because this requires access to the database we cannot provide because of this legacy database"
+      get :me, :oauth_token => 'invalid_oauth_token'
+      response.should be_bad_request
+      JSON.parse(response.body)['error'].should == 'invalid_access_token'
+    end
+
+    it "should throw an error 'authroziation_expired' if an expired oauth_token was given" do
+      pending "Fails because this requires access to the database we cannot provide because of this legacy database"
+      get :me, :oauth_token => 'expired_oauth_token'
+      response.should be_bad_request
+      JSON.parse(response.body)['error'].should == 'invalid_access_token'
+    end
+
+    it "should return the requested data if a valid oauth_token was given" do
+      pending "Fails because this requires access to the database we cannot provide because of this legacy database"
+      get :me, :oauth_token => 'expired_oauth_token'
     end
   end
 end
