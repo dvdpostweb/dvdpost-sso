@@ -31,7 +31,8 @@ class Customer < ActiveRecord::Base
 
   def reset_access_token!
     reset_authentication_token!
-    update_attribute(:access_token_expires_at, 2.weeks.from_now) if remember_token?
+    expiry_date = remember_token? ? 2.weeks.from_now : 1.day.from_now
+    update_attribute(:access_token_expires_at, expiry_date)
   end
 
   def reset_refresh_token!
