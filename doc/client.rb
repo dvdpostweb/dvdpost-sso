@@ -32,6 +32,7 @@ get '/me' do
   access_token = OAuth2::AccessToken.new(client, params[:token])
   content = access_token.get('/me') # This sends access_token in the params, but that should be oauth_token
   puts "*** customer_id = #{JSON.parse(content)['id']} ***"
+  "customer_id = #{JSON.parse(content)['id']}"
 end
 
 get '/refresh' do
@@ -40,6 +41,14 @@ get '/refresh' do
   session[:expires_in] = access_token.expires_in
   session[:refresh_token] = access_token.refresh_token
   puts "*** Session: #{session.inspect} ***"
+end
+
+get '/basic' do
+  params = {:grant_type => 'user_basic', :client_id => 'dvdpost_client', :client_secret => 'dvdpost_client_secret', :username => 'jj@redstorm.be', :password => 'secret'}
+  response = Faraday.post 'http://sso.dvdpost.dev/authorization/token', params
+  access_token = JSON.parse(response.body)
+  puts "*** access token response (json): #{access_token} ***"
+  redirect "me?token=#{access_token['access_token']}" # Internal redirect to directly make a test call to the SSO
 end
 
 def redirect_uri

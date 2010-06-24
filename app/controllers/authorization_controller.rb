@@ -24,6 +24,7 @@ class AuthorizationController < ApplicationController
       case params[:grant_type]
         when 'authorization_code' then authorization_code(params)
         when 'refresh_token'      then refresh_token(params)
+        when 'user_basic'         then user_basic(params)
         else render_bad_request :unsupported_grant_type
       end
     else
@@ -54,6 +55,19 @@ class AuthorizationController < ApplicationController
   def refresh_token(params)
     customer = Customer.find_by_refresh_token(params[:refresh_token])
     generate_and_return_tokens customer, :invalid_refresh_token
+  end
+
+  def user_basic(params)
+    if params[:username] && params[:password]
+      customer = Customer.find_by_customers_email_address(params[:username])
+      if customer && customer.valid_password?(params[:password])
+        generate_and_return_tokens customer, :invalid_user_credentials
+      else
+        render_unauthorized :invalid_user_credentials
+      end
+    else
+      render_bad_request :invalid_user_credentials
+    end
   end
 
   def verify_token

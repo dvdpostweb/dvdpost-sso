@@ -8,6 +8,8 @@ describe AuthorizationController, "Authorization" do
     @client_id ||= 'dvdpost_client'
     @client_secret ||= 'dvdpost_client_secret'
     @redirect_uri ||= 'http://dvdpost.dev/callback'
+    @username ||= 'username'
+    @password ||= 'password'
 
     @invalid_type ||= 'invalid_type'
     @invalid_client_id ||= 'invalid_client_id'
@@ -18,6 +20,7 @@ describe AuthorizationController, "Authorization" do
     @valid_start_params ||= {:type => @type, :client_id => @client_id, :redirect_uri => @redirect_uri}
     @valid_authorization_code_params ||= {:grant_type => 'authorization_code', :client_id => @client_id, :redirect_uri => @redirect_uri}
     @valid_refresh_token_params ||= {:grant_type => 'refresh_token', :client_id => @client_id}
+    @valid_user_basic_params ||= {:grant_type => 'user_basic', :client_id => @client_id}
   end
 
   context "new" do
@@ -179,6 +182,27 @@ describe AuthorizationController, "Authorization" do
     it "should return an access token, refresh token and expiry date if a correct refresh_token was given" do
       pending "Fails because this requires access to the database we cannot provide because of this legacy database"
       post :token, @valid_refresh_token_params.merge(:refresh_token => 'valid_refresh_token')
+    end
+  end
+
+  context "generate a new token with resource owner basic credentials" do
+    it "should throw an error 'invalid_user_credentials' if no username was given" do
+      post :token, @valid_user_basic_params.merge(:password => @password)
+      response.should be_bad_request
+      JSON.parse(response.body)['error'].should == 'invalid_user_credentials'
+    end
+
+    it "should throw an error 'invalid_user_credentials' if no password was given" do
+      post :token, @valid_user_basic_params.merge(:username => @username)
+      response.should be_bad_request
+      JSON.parse(response.body)['error'].should == 'invalid_user_credentials'
+    end
+
+    it "should throw an error 'invalid_user_credentials' if an incorrect username and/or password was given" do
+      pending "Fails because this requires access to the database we cannot provide because of this legacy database"
+      post :token, @valid_user_basic_params.merge(:username => @username, :password => @password)
+      response.should be_bad_request
+      JSON.parse(response.body)['error'].should == 'invalid_user_credentials'
     end
   end
 
