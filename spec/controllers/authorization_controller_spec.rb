@@ -141,6 +141,8 @@ describe AuthorizationController, "Authorization" do
 
     it "should thrown an error 'invalid_authorization_code' if an incorrect authorization_code was given" do
       pending "Fails because this requires access to the database we cannot provide because of this legacy database"
+      # Customer.should_receive(:find_by_verification_code).with('invalid_authorization_code').and_return(nil)
+      # Customer.stub!(:find_by_verification_code).and_return(nil)
       post :token, @valid_authorization_code_params.merge(:authorization_code => 'invalid_authorization_code')
       response.should be_bad_request
       JSON.parse(response.body)['error'].should == 'invalid_authorization_code'
