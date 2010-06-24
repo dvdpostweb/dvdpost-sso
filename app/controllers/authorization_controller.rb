@@ -1,5 +1,5 @@
 class AuthorizationController < ApplicationController
-  before_filter :verify_token, :only => [:me]
+  before_filter :verify_token, :only => [:me, :sign_customer_out]
 
   def new
     if params[:type] == 'web_server'
@@ -33,13 +33,13 @@ class AuthorizationController < ApplicationController
   end
 
   def me
-    render :status => :ok, :json => {:id => current_customer.to_param}
+    render :status => :ok, :json => {:id => @customer.to_param}
   end
 
-  def logout
-    current_customer.destroy_tokens!
-    sign_out(current_customer)
-    redirect_to 'http://www.dvdpost.be'
+  def sign_customer_out # Should be sign_out but that conflicts with the Devise sign_out helper
+    @customer.destroy_tokens!
+    sign_out(@customer)
+    render :status => :ok, :json => {:logout => 'ok'}
   end
 
   private
@@ -73,9 +73,9 @@ class AuthorizationController < ApplicationController
   def verify_token
     oauth_token = params[:oauth_token] || params[:access_token] # Current client gem does not support oauth_token yet
     if oauth_token
-      customer = Customer.find_by_authentication_token(oauth_token)
-      if customer
-        render_unauthorized :authroziation_expired if customer.access_token_expired?
+      @customer = Customer.find_by_authentication_token(oauth_token)
+      if @customer
+        render_unauthorized :authroziation_expired if @customer.access_token_expired?
       else
         render_unauthorized :invalid_access_token
       end

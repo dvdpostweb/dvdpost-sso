@@ -35,6 +35,11 @@ get '/me' do
   "customer_id = #{JSON.parse(content)['id']}"
 end
 
+get '/sign_out' do
+  access_token = OAuth2::AccessToken.new(client, params[:token])
+  access_token.post('/sign_out')
+end
+
 get '/refresh' do
   access_token = client.web_server.refresh_access_token(session[:refresh_token])
   session[:oauth_token] = access_token.token

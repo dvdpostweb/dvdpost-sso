@@ -7,8 +7,8 @@ DvdpostSso::Application.routes.draw do |map|
       get  'new'   , :to => :new
       post 'token' , :to => :token
     end
-    get 'me',     :to => :me
-    get 'logout', :to => :logout
+    get 'me',        :to => :me
+    post 'sign_out', :to => :sign_customer_out
   end
 
   root :to => 'authorization#me'

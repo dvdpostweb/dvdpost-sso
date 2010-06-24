@@ -218,7 +218,7 @@ describe AuthorizationController, "Authorization" do
     end
   end
 
-  context "get customer's id after verifying the request" do
+  context "access a protected resource" do
     it "should throw an error 'invalid_access_token' if no oauth_token was given" do
       get :me
       response.should be_bad_request
@@ -226,22 +226,34 @@ describe AuthorizationController, "Authorization" do
     end
 
     it "should throw an error 'invalid_access_token' if an invalid oauth_token was given" do
-      pending "Fails because this requires access to the database we cannot provide because of this legacy database"
+      @customer.update_tokens!
       get :me, :oauth_token => 'invalid_oauth_token'
       response.should be_bad_request
       JSON.parse(response.body)['error'].should == 'invalid_access_token'
     end
 
     it "should throw an error 'authroziation_expired' if an expired oauth_token was given" do
-      pending "Fails because this requires access to the database we cannot provide because of this legacy database"
+      @customer.update_tokens!
+      @customer.update_attribute(:access_token_expires_at, 1.day.ago.to_s(:db))
       get :me, :oauth_token => 'expired_oauth_token'
       response.should be_bad_request
       JSON.parse(response.body)['error'].should == 'invalid_access_token'
     end
+  end
 
+  context "get customer's id after verifying the request" do
     it "should return the requested data if a valid oauth_token was given" do
       pending "Fails because this requires access to the database we cannot provide because of this legacy database"
       get :me, :oauth_token => 'expired_oauth_token'
+    end
+  end
+
+  context "sign the customer out" do
+    it "should sign out when a valid oauth_token was given" do
+      @customer.update_tokens!
+      post :sign_customer_out, :oauth_token => @customer.authentication_token
+      response.should be_ok
+      JSON.parse(response.body)['logout'].should == 'ok'
     end
   end
 end
