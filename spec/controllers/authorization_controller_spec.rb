@@ -243,8 +243,10 @@ describe AuthorizationController, "Authorization" do
 
   context "get customer's id after verifying the request" do
     it "should return the requested data if a valid oauth_token was given" do
-      pending "Fails because this requires access to the database we cannot provide because of this legacy database"
-      get :me, :oauth_token => 'expired_oauth_token'
+      @customer.update_tokens!
+      get :me, :oauth_token => @customer.authentication_token
+      response.should be_ok
+      JSON.parse(response.body)['id'].should == @customer.to_param
     end
   end
 
