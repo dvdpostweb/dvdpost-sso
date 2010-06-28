@@ -6,7 +6,7 @@ class Customer < ActiveRecord::Base
   alias_attribute :email, :customers_email_address
   alias_attribute :password, :customers_password
 
-  devise :database_authenticatable, :registerable, :recoverable, :validatable, :token_authenticatable, :rememberable
+  devise :database_authenticatable, :validatable, :token_authenticatable, :rememberable #, :recoverable, :registerable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :customers_email_address, :password, :password_confirmation
@@ -38,6 +38,10 @@ class Customer < ActiveRecord::Base
   def reset_refresh_token!
     update_attribute(:refresh_token, Digest::SHA1.hexdigest("dvdpost_secret_for_#{email}_at_#{Time.now}_which_expires_at_#{10.years.from_now}"))
     update_attribute(:refresh_token_expires_at, 10.years.from_now) if remember_token? # 10 years as in "unlimited" (yes I know, it's nasty)
+  end
+
+  def valid_tokens?
+    authentication_token? and !access_token_expired?
   end
 
   def access_token_expired?

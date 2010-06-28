@@ -42,7 +42,7 @@ specs:
 - activemodel: 
     version: 3.0.0.beta4
 - erubis: 
-    version: 2.6.5
+    version: 2.6.6
 - rack: 
     version: 1.1.0
 - rack-mount: 
@@ -94,23 +94,23 @@ specs:
     version: 0.0.10
     source: 0
 - thor: 
-    version: 0.13.6
+    version: 0.13.7
 - railties: 
     version: 3.0.0.beta4
 - rails: 
     version: 3.0.0.beta4
 - rspec-core: 
-    version: 2.0.0.beta.13
+    version: 2.0.0.beta.14
 - rspec-expectations: 
-    version: 2.0.0.beta.13
+    version: 2.0.0.beta.14
 - rspec-mocks: 
-    version: 2.0.0.beta.13
+    version: 2.0.0.beta.14
 - rspec: 
-    version: 2.0.0.beta.13
+    version: 2.0.0.beta.14
 - webrat: 
     version: 0.7.1
 - rspec-rails: 
-    version: 2.0.0.beta.13
+    version: 2.0.0.beta.14.1
 - sinatra: 
     version: "1.0"
 - sqlite3-ruby: 
@@ -125,6 +125,6 @@ sources:
     uri: git://github.com/jeroenj/devise.git
     branch: legacy
     git: git://github.com/jeroenj/devise.git
-    ref: f2a456c498fcd697ecd43c243288f483bcb8b361
+    ref: 263215958aa7bd0efa05a1c872fc430fcef8405e
 - Rubygems: 
     uri: http://rubygems.org

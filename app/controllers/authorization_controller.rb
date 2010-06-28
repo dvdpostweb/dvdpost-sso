@@ -5,7 +5,17 @@ class AuthorizationController < ApplicationController
     if params[:type] == 'web_server'
       if params[:client_id] == 'dvdpost_client'
         if params[:redirect_uri]
+          if current_customer
+            unless session[:new] or current_customer.valid_tokens?
+              current_customer.forget_me!
+              current_customer.destroy_tokens!
+              sign_out current_customer
+            end
+          end
+          # We're using session[:new] for the redirect (to this action) after authentication. Otherwise it would destroy current_customer all over again.
+          session[:new] = true
           authenticate_customer!
+          session.delete(:new)
           redirect_to callback_url(params[:redirect_uri], {:code => current_customer.generate_verification_code!})
         else
           render_bad_request :redirect_uri_mismatch
@@ -38,7 +48,6 @@ class AuthorizationController < ApplicationController
 
   def sign_customer_out # Should be sign_out but that conflicts with the Devise sign_out helper
     @customer.destroy_tokens!
-    sign_out(@customer)
     render :status => :ok, :json => {:logout => 'ok'}
   end
 
