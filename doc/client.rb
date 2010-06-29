@@ -7,15 +7,15 @@ require 'json'
 enable :sessions
 
 def client
-  @client ||= OAuth2::Client.new( 'dvdpost_client',
-                                  'dvdpost_client_secret',
+  @client ||= OAuth2::Client.new( 'dvdpost_sinatra_client',
+                                  'dvdpost_sinatra_client_secret',
                                   :site => 'http://sso.dvdpost.dev',
                                   :authorize_path => 'authorization/new',
                                   :access_token_path => 'authorization/token')
 end
 
 get '/start' do
-  redirect client.web_server.authorize_url(:redirect_uri => redirect_uri)
+  redirect client.web_server.authorize_url(:redirect_uri => redirect_uri, :client_secret => 'dvdpost_sinatra_client_secret')
 end
 
 get '/callback' do
@@ -49,7 +49,7 @@ get '/refresh' do
 end
 
 get '/basic' do
-  params = {:grant_type => 'user_basic', :client_id => 'dvdpost_client', :client_secret => 'dvdpost_client_secret', :username => 'jj@redstorm.be', :password => 'secret'}
+  params = {:grant_type => 'user_basic', :client_id => 'dvdpost_sinatra_client', :client_secret => 'dvdpost_sinatra_client_secret', :username => 'jj@redstorm.be', :password => 'secret'}
   response = Faraday.post 'http://sso.dvdpost.dev/authorization/token', params
   access_token = JSON.parse(response.body)
   puts "*** access token response (json): #{access_token} ***"

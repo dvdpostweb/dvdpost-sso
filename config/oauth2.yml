@@ -1,0 +1,29 @@
+# Production clients
+rails_client:
+  client_id: dvdpost_rails_client
+  client_secret: dvdpost_rails_client_secret
+  redirect_uri: http://staging.dvdpost.be/locale/callback
+php_client:
+  client_id: dvdpost_php_client
+  client_secret: dvdpost_php_client_secret
+  redirect_uri: 
+
+# Development clients
+rails_development_client:
+  client_id: dvdpost_rails_development_client
+  client_secret: dvdpost_rails_development_client_secret
+  redirect_uri: http://dvdpost.dev/locale/callback
+rails_staging_client:
+  client_id: dvdpost_rails_staging_client
+  client_secret: dvdpost_rails_staging_client_secret
+  redirect_uri: http://staging.dvdpost.be/locale/callback
+
+# Test clients
+sinatra_client:
+  client_id: dvdpost_sinatra_client
+  client_secret: dvdpost_sinatra_client_secret
+  redirect_uri: http://localhost:4567/callback
+rspec_client:
+  client_id: dvdpost_rspec_client
+  client_secret: dvdpost_rspec_client_secret
+  redirect_uri: http://dvdpost.dev/callback

@@ -5,8 +5,8 @@ describe AuthorizationController, "Authorization" do
 
   before(:each) do
     @type ||= 'web_server'
-    @client_id ||= 'dvdpost_client'
-    @client_secret ||= 'dvdpost_client_secret'
+    @client_id ||= 'dvdpost_rspec_client'
+    @client_secret ||= 'dvdpost_rspec_client_secret'
     @redirect_uri ||= 'http://dvdpost.dev/callback'
     @username ||= 'customer@dvdpost.dev'
     @password ||= 'secret'
@@ -14,13 +14,13 @@ describe AuthorizationController, "Authorization" do
     @invalid_type ||= 'invalid_type'
     @invalid_client_id ||= 'invalid_client_id'
     @invalid_client_id ||= 'invalid_client_secret'
-    @invalid_redirect_uri ||= 'http://my_hack_site.dev/callback'
+    @invalid_redirect_uri ||= 'http://hacker.dev/callback'
     @malformed_redirect_uri ||= 'malformed://dvdpost.dev/callback'
 
-    @valid_start_params ||= {:type => @type, :client_id => @client_id, :redirect_uri => @redirect_uri}
-    @valid_authorization_code_params ||= {:grant_type => 'authorization_code', :client_id => @client_id, :redirect_uri => @redirect_uri}
-    @valid_refresh_token_params ||= {:grant_type => 'refresh_token', :client_id => @client_id}
-    @valid_user_basic_params ||= {:grant_type => 'user_basic', :client_id => @client_id}
+    @valid_start_params ||= {:type => @type, :client_id => @client_id, :client_secret => @client_secret, :redirect_uri => @redirect_uri}
+    @valid_authorization_code_params ||= {:grant_type => 'authorization_code', :client_id => @client_id, :client_secret => @client_secret, :redirect_uri => @redirect_uri}
+    @valid_refresh_token_params ||= {:grant_type => 'refresh_token', :client_id => @client_id, :client_secret => @client_secret}
+    @valid_user_basic_params ||= {:grant_type => 'user_basic', :client_id => @client_id, :client_secret => @client_secret}
 
     Customer.destroy_all
     @customer = Customer.new
@@ -54,14 +54,12 @@ describe AuthorizationController, "Authorization" do
     end
 
     it "should throw an error 'invalid_client_credentials' if no client_secret was given" do
-      pending "client_secret's are not yet implemented"
       get :new, :type => @type, :client_id => @client_id, :redirect_uri => @redirect_uri
       response.should be_bad_request
       JSON.parse(response.body)['error'].should == 'invalid_client_credentials'
     end
 
     it "should throw an error 'invalid_client_credentials' if an invalid client_id was given" do
-      pending "client_secret's are not yet implemented"
       get :new, :type => @type, :client_id => @client_id, :client_secret => @invalid_client_secret, :redirect_uri => @redirect_uri
       response.should be_bad_request
       JSON.parse(response.body)['error'].should == 'invalid_client_credentials'
@@ -69,20 +67,22 @@ describe AuthorizationController, "Authorization" do
 
 
     it "should throw an error 'redirect_uri_mismatch' if no redirect_uri was given" do
-      get :new, :type => @type, :client_id => @client_id
+      get :new, :type => @type, :client_id => @client_id, :client_secret => @client_secret
       response.should be_bad_request
       JSON.parse(response.body)['error'].should == 'redirect_uri_mismatch'
     end
 
     it "should throw an e rror 'redirect_uri_mismatch' if an incorrect redirect_uri was given" do
-      pending "This is not yet validated in the code"
-      get :new, :type => @type, :client_id => @client_id, :redirect_uri => @invalid_redirect_uri
+      get :new, :type => @type, :client_id => @client_id, :client_secret => @client_secret, :redirect_uri => @invalid_redirect_uri
+      response.should be_bad_request
+      JSON.parse(response.body)['error'].should == 'redirect_uri_mismatch'
     end
 
 
     it "should throw an e rror 'redirect_uri_mismatch' if a malformed redirect_uri was given" do
-      pending "This is not yet validated in the code"
-      get :new, :type => @type, :client_id => @client_id, :redirect_uri => @malformed_redirect_uri
+      get :new, :type => @type, :client_id => @client_id, :client_secret => @client_secret, :redirect_uri => @malformed_redirect_uri
+      response.should be_bad_request
+      JSON.parse(response.body)['error'].should == 'redirect_uri_mismatch'
     end
 
     it "should redirect to login when the customer is not authenticated" do
@@ -124,13 +124,13 @@ describe AuthorizationController, "Authorization" do
     end
 
     it "should throw an error 'unsupported_grant_type' if no grant_type was given" do
-      post :token, :client_id => @client_id
+      post :token, :client_id => @client_id, :client_secret => @client_secret
       response.should be_bad_request
       JSON.parse(response.body)['error'].should == 'unsupported_grant_type'
     end
 
     it "should throw an error 'unsupported_grant_type' if an invalid grant_type was given" do
-      post :token, :client_id => @client_id, :grant_type => 'invalid_grant_type'
+      post :token, :client_id => @client_id, :client_secret => @client_secret, :grant_type => 'invalid_grant_type'
       response.should be_bad_request
       JSON.parse(response.body)['error'].should == 'unsupported_grant_type'
     end
@@ -138,13 +138,15 @@ describe AuthorizationController, "Authorization" do
 
   context "generate a new token with an authorization code" do
     it "should throw an error 'redirect_uri_mismatch' if no redirect_uri was given" do
-      post :token, :grant_type => 'authorization_code', :client_id => @client_id
+      post :token, :grant_type => 'authorization_code', :client_id => @client_id, :client_secret => @client_secret
       response.should be_bad_request
       JSON.parse(response.body)['error'].should == 'redirect_uri_mismatch'
     end
 
     it "should thrown an error 'redirect_uri_mismatch' if an incorrect redirect_uri was given" do
-      pending "Validation on redirect_uri's is not implemented."
+      post :token, :grant_type => 'authorization_code', :client_id => @client_id, :client_secret => @client_secret, :redirect_uri => @invalid_redirect_uri
+      response.should be_bad_request
+      JSON.parse(response.body)['error'].should == 'redirect_uri_mismatch'
     end
 
     it "should thrown an error 'invalid_authorization_code' if an incorrect authorization_code was given" do

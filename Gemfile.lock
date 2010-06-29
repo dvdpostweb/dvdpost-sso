@@ -110,7 +110,7 @@ specs:
 - webrat: 
     version: 0.7.1
 - rspec-rails: 
-    version: 2.0.0.beta.14.1
+    version: 2.0.0.beta.14.2
 - sinatra: 
     version: "1.0"
 - sqlite3-ruby: 
@@ -120,7 +120,7 @@ sources:
 - Git: 
     uri: git://github.com/jeroenj/oauth2.git
     git: git://github.com/jeroenj/oauth2.git
-    ref: 8f95c764fcad62b9e2895c400068113a3e39c233
+    ref: bdd30ea98405405924a674a66a58426747105700
 - Git: 
     uri: git://github.com/jeroenj/devise.git
     branch: legacy

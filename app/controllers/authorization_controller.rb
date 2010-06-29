@@ -1,10 +1,11 @@
 class AuthorizationController < ApplicationController
+  include AuthorizationHelper
   before_filter :verify_token, :only => [:me, :sign_customer_out]
 
   def new
-    if params[:type] == 'web_server'
-      if params[:client_id] == 'dvdpost_client'
-        if params[:redirect_uri]
+    validate_type do
+      validate_client do
+        validate_redirect_uri do
           if current_customer
             unless session[:new] or current_customer.valid_tokens?
               current_customer.forget_me!
@@ -17,19 +18,13 @@ class AuthorizationController < ApplicationController
           authenticate_customer!
           session.delete(:new)
           redirect_to callback_url(params[:redirect_uri], {:code => current_customer.generate_verification_code!})
-        else
-          render_bad_request :redirect_uri_mismatch
         end
-      else
-        render_bad_request :invalid_client_credentials
       end
-    else
-      render_bad_request :invalid_client_type
     end
   end
 
   def token
-    if params[:client_id] == 'dvdpost_client'
+    validate_client do
       # params[:client_secret] == 'some_secret' # Clients should be reigstered and their secret should be validated too
       case params[:grant_type]
         when 'authorization_code' then authorization_code(params)
@@ -37,8 +32,6 @@ class AuthorizationController < ApplicationController
         when 'user_basic'         then user_basic(params)
         else render_bad_request :unsupported_grant_type
       end
-    else
-      render_bad_request :invalid_client_credentials
     end
   end
 
@@ -53,11 +46,9 @@ class AuthorizationController < ApplicationController
 
   private
   def authorization_code(params)
-    if params[:redirect_uri] # More secure would be to check if it's a registered redirect_uri
+    validate_redirect_uri do
       customer = Customer.find_by_verification_code(params[:code])
       generate_and_return_tokens customer, :invalid_authorization_code
-    else
-      render_bad_request :redirect_uri_mismatch
     end
   end
 
@@ -99,19 +90,5 @@ class AuthorizationController < ApplicationController
     else
       render_unauthorized error_message
     end
-  end
-
-  def render_unauthorized(message)
-    warden.custom_failure!
-    render_error :unauthorized, message
-  end
-
-  def render_bad_request(message)
-    render_error :bad_request, message
-  end
-
-  def render_error(status, message)
-    logger.error "*** Error: #{status} => #{message} ***"
-    render :status => status, :json => {:error => message}
   end
 end
