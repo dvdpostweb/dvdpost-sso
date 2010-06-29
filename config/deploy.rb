@@ -4,7 +4,7 @@ require 'capistrano/ext/multistage'
 
 namespace :deploy do
   task :bundle_gems do
-    run "cd #{current_path} && export PATH=/opt/ruby/bin:$PATH && bundle install --relock"
+    run "cd #{current_path} && export PATH=/opt/ruby/bin:$PATH && bundle install --without test --relock"
   end
 end
 
