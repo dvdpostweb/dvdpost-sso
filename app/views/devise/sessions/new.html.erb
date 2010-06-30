@@ -1,17 +1,46 @@
-<h2>Sign in</h2>
-
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <p><%= f.label :customers_email_address %></p>
-  <p><%= f.text_field :customers_email_address %></p>
-
-  <p><%= f.label :password %></p>
-  <p><%= f.password_field :password %></p>
-
-  <% if devise_mapping.rememberable? -%>
-    <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
-  <% end -%>
-
-  <p><%= f.submit "Sign in" %></p>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+<div id="wrap_login">
+  <div id="header_login" align="right">
+    <ul id="login" class="subnav">
+      <li class="first">
+        <%= link_to 'Accueil', 'http://www.dvdpost.be' %>
+      </li>
+      <li>
+        <%= link_to 'Aide', '/fr/faq' %>
+      </li>
+      <li>
+        <a href="/fr" id="lang">Français</a>
+        <span style="display: none;" id="lang-box">
+          <a href="/en">English</a>
+          <a href="/nl">Nederlands</a>
+        </span>
+      </li>
+    </ul>
+  </div>
+  <div id="login_content_bg">
+    <div id="login_content">
+      <div align="center">
+        <h1>
+          <a href="www.dvdpost.be" class="like-btn">DVDPost - Online DVD rental</a>
+        </h1>
+      </div>
+      <div id="title">Bienvenue, Identifiez-vous</div>
+      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+        <p class="inputs_codes">
+          Adresse e-mail:<br />
+          <%= f.text_field :customers_email_address, :class => 'inputs_codes', :size => '35', :tye => 'text' %>
+        </p>
+        <p class="inputs_codes">
+          Mot de passe:<br />
+          <%= f.password_field :password, :class => 'inputs_codes', :size => '35', :maxlength => '40'%>
+        </p>
+        <% if devise_mapping.rememberable? -%>
+          <p class="check_login">
+          <p><%= f.check_box :remember_me, :checked => true, :name => 'remMe', :class => 'cssCheckbox' %> <%= f.label :remember_me %></p>
+          </p>
+        <% end -%>
+        <p class="check_login">Vous avez oublié votre mot de passe? <%= link_to 'Cliquez ici', 'http://www.dvdpost.be/password_forgotten.php', :class => 'link_forget' %></p>
+        <p align="right" class="button_login"><%= image_submit_tag 'button_login_squared.gif', :alt => 'Sign in', :title => 'Se connecter', :border => 0 %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
