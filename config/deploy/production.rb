@@ -1,5 +1,3 @@
-raise 'First use: Verify configuration first !'
-
 #############################################################
 #	Application
 #############################################################
@@ -22,7 +20,8 @@ set :rails_env, "production"
 #############################################################
 
 set :user, "sso"
-set :domain, "sso.dvdpost.be"
+set :domain, "staging.sso.dvdpost.be"
+set :port, 22012
 server domain, :app, :web
 role :db, domain, :primary => true
 
@@ -33,7 +32,7 @@ role :db, domain, :primary => true
 set :scm, :git
 set :branch, "production"
 set :scm_user, 'sso'
-set :scm_passphrase, "L035t3rz"
+set :scm_passphrase, "[y'|\E7U158]9*"
 set :repository, "git@github.com:redstorm/dvdpost-sso.git"
 set :deploy_via, :remote_cache
 
@@ -48,10 +47,11 @@ namespace :deploy do
     production:
       adapter: mysql
       encoding: utf8
-      username: sso
-      password: L035t3rz
-      database: sso_production
-      host: db.x0.sso.be
+      database: dvdpost_be_prod
+      username: webuser
+      password: 3gallfir-
+      host: matadi
+      port: 3306
     EOF
 
     put db_config, "#{release_path}/config/database.yml"
