@@ -18,6 +18,12 @@ rails_staging_client:
   client_secret: dvdpost_rails_staging_client_secret
   redirect_uri: http://staging.dvdpost.be/locale/callback
 
+# Pre production clients
+rails_pre_prod_client:
+  client_id: dvdpost_rails_pre_prod_client
+  client_secret: dvdpost_rails_pre_prod_client_secret
+  redirect_uri: http://beta.dvdpost.com/locale/callback
+
 # Test clients
 sinatra_client:
   client_id: dvdpost_sinatra_client
