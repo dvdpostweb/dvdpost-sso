@@ -2,7 +2,7 @@
 rails_client:
   client_id: dvdpost_rails_client
   client_secret: dvdpost_rails_client_secret
-  redirect_uri: http://staging.dvdpost.be/locale/callback
+  redirect_uri: http://private.dvdpost.com/locale/callback
 php_client:
   client_id: dvdpost_php_client
   client_secret: dvdpost_php_client_secret
