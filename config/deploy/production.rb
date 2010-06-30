@@ -20,7 +20,7 @@ set :rails_env, "production"
 #############################################################
 
 set :user, "sso"
-set :domain, "staging.sso.dvdpost.be"
+set :domain, "sso.dvdpost.com"
 set :port, 22012
 server domain, :app, :web
 role :db, domain, :primary => true
@@ -53,7 +53,6 @@ namespace :deploy do
       host: matadi
       port: 3306
     EOF
-
     put db_config, "#{release_path}/config/database.yml"
   end
 
