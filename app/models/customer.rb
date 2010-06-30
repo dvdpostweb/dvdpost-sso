@@ -25,7 +25,7 @@ class Customer < ActiveRecord::Base
   def update_tokens!
     destroy_attribute :verification_code
     reset_access_token! if access_token_expired?
-    reset_refresh_token! if refresh_token_expired?
+    reset_refresh_token! if refresh_token_expired? && remember_token?
     true
   end
 
@@ -37,7 +37,7 @@ class Customer < ActiveRecord::Base
 
   def reset_refresh_token!
     update_attribute(:refresh_token, Digest::SHA1.hexdigest("dvdpost_secret_for_#{email}_at_#{Time.now}_which_expires_at_#{10.years.from_now}"))
-    update_attribute(:refresh_token_expires_at, 10.years.from_now) if remember_token? # 10 years as in "unlimited" (yes I know, it's nasty)
+    update_attribute(:refresh_token_expires_at, 10.years.from_now) # 10 years as in "unlimited" (yes I know, it's nasty
   end
 
   def valid_tokens?

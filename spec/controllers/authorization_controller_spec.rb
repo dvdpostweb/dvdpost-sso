@@ -92,7 +92,8 @@ describe AuthorizationController, "Authorization" do
     end
 
     it "should redirect to redirect_uri with an authorization code when the customer is authenticated" do
-      pending "Fails because of an error: \"undefined method `generate_verification_code!' for nil:NilClass\""
+      pending "Fails because of an error: \"Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like \"redirect_to(...) and return\".\""
+      sign_in @customer
       get :new, @valid_start_params
       response.should redirect_to(@redirect_uri)
     end
@@ -150,45 +151,73 @@ describe AuthorizationController, "Authorization" do
     end
 
     it "should thrown an error 'invalid_authorization_code' if an incorrect authorization_code was given" do
-      pending "Fails because this requires access to the database we cannot provide because of this legacy database"
-      # Customer.should_receive(:find_by_verification_code).with('invalid_authorization_code').and_return(nil)
-      # Customer.stub!(:find_by_verification_code).and_return(nil)
-      post :token, @valid_authorization_code_params.merge(:authorization_code => 'invalid_authorization_code')
+      @customer.generate_verification_code!
+      post :token, @valid_authorization_code_params.merge(:code => 'invalid_authorization_code')
       response.should be_bad_request
       JSON.parse(response.body)['error'].should == 'invalid_authorization_code'
     end
 
-    it "should return an access token, refresh token and expiry date if a correct authorization_code was given" do
-      pending "Fails because this requires access to the database we cannot provide because of this legacy database"
-      post :token, @valid_authorization_code_params.merge(:authorization_code => 'valid_authorization_code')
+    it "should return an access token and no expires_in or refresh_token if a correct authorization_code was given and remember_me was not checked" do
+      @customer.generate_verification_code!
+      post :token, @valid_authorization_code_params.merge(:code => @customer.verification_code)
+      response.should be_ok
+      customer = Customer.find(@customer.to_param)
+      JSON.parse(response.body)['access_token'].should == customer.authentication_token
+      JSON.parse(response.body)['expires_in'].should == 0
+      JSON.parse(response.body)['refresh_token'].should be_nil
+    end
+
+    it "should return an access token, refresh token and expiry date if a correct authorization_code was given and remember_me was checked" do
+      @customer.remember_me!
+      @customer.generate_verification_code!
+      post :token, @valid_authorization_code_params.merge(:code => @customer.verification_code)
+      response.should be_ok
+      customer = Customer.find(@customer.to_param)
+      JSON.parse(response.body)['access_token'].should == customer.authentication_token
+      JSON.parse(response.body)['expires_in'].should > 0
+      JSON.parse(response.body)['refresh_token'].should == customer.refresh_token
     end
   end
 
   context "generate a new token with a refresh token" do
     it "should thrown an error 'invalid_refresh_token' if no refresh_token was given" do
-      pending "Fails because this requires access to the database we cannot provide because of this legacy database"
+      @customer.update_tokens!
       post :token, @valid_refresh_token_params
       response.should be_bad_request
       JSON.parse(response.body)['error'].should == 'invalid_refresh_token'
     end
 
     it "should thrown an error 'invalid_refresh_token' if an incorrect refresh_token was given" do
-      pending "Fails because this requires access to the database we cannot provide because of this legacy database"
+      @customer.update_tokens!
       post :token, @valid_refresh_token_params.merge(:refresh_token => 'invalid_refresh_token')
       response.should be_bad_request
       JSON.parse(response.body)['error'].should == 'invalid_refresh_token'
     end
 
     it "should thrown an error 'invalid_refresh_token' if an expired refresh_token was given" do
-      pending "Fails because this requires access to the database we cannot provide because of this legacy database"
-      post :token, @valid_refresh_token_params.merge(:refresh_token => 'expired_refresh_token')
+      @customer.update_tokens!
+      @customer.update_attribute(:refresh_token_expires_at, 1.day.ago)
+      post :token, @valid_refresh_token_params.merge(:refresh_token => @customer.refresh_token)
       response.should be_bad_request
       JSON.parse(response.body)['error'].should == 'invalid_refresh_token'
     end
 
-    it "should return an access token, refresh token and expiry date if a correct refresh_token was given" do
-      pending "Fails because this requires access to the database we cannot provide because of this legacy database"
-      post :token, @valid_refresh_token_params.merge(:refresh_token => 'valid_refresh_token')
+    it "should thrown an error 'invalid_refresh_token' if a correct refresh_token was given and remember_me was not checked" do
+      @customer.update_tokens!
+      post :token, @valid_refresh_token_params.merge(:refresh_token => @customer.refresh_token)
+      response.should be_bad_request
+      JSON.parse(response.body)['error'].should == 'invalid_refresh_token'
+    end
+
+    it "should return an access token, refresh token and expiry date if a correct refresh_token was given and remember_me was checked" do
+      @customer.remember_me!
+      @customer.update_tokens!
+      post :token, @valid_refresh_token_params.merge(:refresh_token => @customer.refresh_token)
+      response.should be_ok
+      customer = Customer.find(@customer.to_param)
+      JSON.parse(response.body)['access_token'].should == customer.authentication_token
+      JSON.parse(response.body)['expires_in'].should  > 0
+      JSON.parse(response.body)['refresh_token'].should == customer.refresh_token
     end
   end
 

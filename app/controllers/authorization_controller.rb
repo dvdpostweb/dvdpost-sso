@@ -47,14 +47,26 @@ class AuthorizationController < ApplicationController
   private
   def authorization_code(params)
     validate_redirect_uri do
-      customer = Customer.find_by_verification_code(params[:code])
-      generate_and_return_tokens customer, :invalid_authorization_code
+      if params[:code] && !params[:code].empty?
+        customer = Customer.find_by_verification_code(params[:code])
+        generate_and_return_tokens customer, :invalid_authorization_code
+      else
+        render_bad_request :invalid_authorization_code
+      end
     end
   end
 
   def refresh_token(params)
-    customer = Customer.find_by_refresh_token(params[:refresh_token])
-    generate_and_return_tokens customer, :invalid_refresh_token
+    if params[:refresh_token] && !params[:refresh_token].empty?
+      customer = Customer.find_by_refresh_token(params[:refresh_token])
+      if customer && customer.refresh_token_expired?
+        render_bad_request :invalid_refresh_token
+      else
+        generate_and_return_tokens customer, :invalid_refresh_token
+      end
+    else
+      render_bad_request :invalid_refresh_token
+    end
   end
 
   def user_basic(params)
