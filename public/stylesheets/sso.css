@@ -125,5 +125,12 @@ font-size:13px;}
 	font-weight: lighter;	
 	
 	}
-	
-	
+#submit_button	{
+	background:url("../images/button_login_squared.png") repeat scroll 0 0 transparent;
+  border-style:none;
+  color:white;
+  cursor:pointer;
+  font-size:0.8em;
+  height:38px;
+  width:117px;
+}

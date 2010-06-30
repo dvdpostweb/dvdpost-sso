@@ -39,7 +39,9 @@
           </p>
         <% end -%>
         <p class="check_login">Vous avez oublié votre mot de passe? <%= link_to 'Cliquez ici', 'http://www.dvdpost.be/password_forgotten.php', :class => 'link_forget' %></p>
-        <p align="right" class="button_login"><%= image_submit_tag 'button_login_squared.png', :alt => 'Sign in', :title => 'Se connecter', :border => 0 %></p>
+        <p align="right" class="button_login">
+          <%= submit_tag 'Se connecter', :alt => 'Sign in', :title => 'Se connecter', :border => 0, :id =>'submit_button' %>
+        </p>
       <% end %>
     </div>
   </div>
