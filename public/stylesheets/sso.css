@@ -35,8 +35,8 @@ text-align:right;
 }
 
 #wrap_login {
-margin:0 auto;
-
+  width: 376px;
+  margin: 0 auto;
 }
 
 
