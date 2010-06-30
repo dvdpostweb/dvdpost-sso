@@ -14,8 +14,8 @@ describe AuthorizationController, "Authorization" do
     @invalid_type ||= 'invalid_type'
     @invalid_client_id ||= 'invalid_client_id'
     @invalid_client_id ||= 'invalid_client_secret'
-    @invalid_redirect_uri ||= 'http://hacker.dev/callback'
-    @malformed_redirect_uri ||= 'malformed://dvdpost.dev/callback'
+    @invalid_redirect_uri ||= 'http://dvdpost.dev.hacker.dev/callback'
+    @malformed_redirect_uri ||= 'malformed://dvdpostdev/callback'
 
     @valid_start_params ||= {:type => @type, :client_id => @client_id, :client_secret => @client_secret, :redirect_uri => @redirect_uri}
     @valid_authorization_code_params ||= {:grant_type => 'authorization_code', :client_id => @client_id, :client_secret => @client_secret, :redirect_uri => @redirect_uri}
