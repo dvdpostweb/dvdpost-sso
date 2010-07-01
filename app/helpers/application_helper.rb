@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def switch_locale_link(locale, options=nil)
+    link_to t(".#{locale}"), params.merge(:locale => locale), options
+  end
+
   def callback_url(uri, params)
     if params.empty?
       uri
@@ -7,5 +11,9 @@ module ApplicationHelper
       uri = "#{uri}#{uri.match(/\?/) ? '&' : '?'}"
       "#{uri}#{query}"
     end
+  end
+
+  def dvdpost_url
+    'http://www.dvdpost.be'
   end
 end

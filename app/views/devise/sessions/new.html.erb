@@ -2,16 +2,17 @@
   <div id="header_login" align="right">
     <ul id="login" class="subnav">
       <li class="first">
-        <%= link_to 'Accueil', 'http://www.dvdpost.be' %>
+        <%= link_to t('.home'), dvdpost_url %>
       </li>
       <li>
-        <%= link_to 'Aide', '/fr/faq' %>
+        <%= link_to t('.help'), '/fr/faq' %>
       </li>
       <li>
-        <a href="/fr" id="lang">Français</a>
-        <span style="display: none;" id="lang-box">
-          <a href="/en">English</a>
-          <a href="/nl">Nederlands</a>
+        <%= switch_locale_link I18n.locale, {:id => 'lang'} %>
+        <span id="lang-box" style="display:none;">
+          <% I18n.available_locales.each do |locale| %>
+            <%= switch_locale_link locale unless locale.to_s == I18n.locale.to_s %>
+          <% end %>
         </span>
       </li>
     </ul>
@@ -20,27 +21,33 @@
     <div id="login_content">
       <div align="center">
         <h1>
-          <a href="www.dvdpost.be" class="like-btn">DVDPost - Online DVD rental</a>
+          <%= link_to 'DVDPost - Online DVD rental', dvdpost_url, :class => 'like-btn' %>
         </h1>
       </div>
-      <div id="title">Bienvenue, Identifiez-vous</div>
+      <div id="title"><%= t '.title' %></div>
       <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
         <p class="inputs_codes">
-          Adresse e-mail:<br />
+          <%= t '.email_label' %>:<br />
           <%= f.text_field :customers_email_address, :class => 'inputs_codes', :size => '35', :tye => 'text' %>
         </p>
         <p class="inputs_codes">
-          Mot de passe:<br />
+          <%= t '.pass_label' %>:<br />
           <%= f.password_field :password, :class => 'inputs_codes', :size => '35', :maxlength => '40'%>
         </p>
         <% if devise_mapping.rememberable? -%>
           <p class="check_login">
-          <p><%= f.check_box :remember_me, :checked => true, :name => 'remMe', :class => 'cssCheckbox' %> <%= f.label :remember_me %></p>
+            <p>
+              <%= f.check_box :remember_me, :checked => true, :name => 'remMe', :class => 'cssCheckbox' %>
+              <%= f.label :remember_me %>
+            </p>
           </p>
         <% end -%>
-        <p class="check_login">Vous avez oublié votre mot de passe? <%= link_to 'Cliquez ici', 'http://www.dvdpost.be/password_forgotten.php', :class => 'link_forget' %></p>
+        <p class="check_login">
+          <%= t '.forgot_pass' %>
+          <%= link_to t('.click_here'), 'http://www.dvdpost.be/password_forgotten.php', :class => 'link_forget' %>
+        </p>
         <p align="right" class="button_login">
-          <%= submit_tag 'Se connecter', :alt => 'Sign in', :title => 'Se connecter', :border => 0, :id =>'submit_button' %>
+          <%= f.submit t('.connect'), :id => 'submit_button' %>
         </p>
       <% end %>
     </div>
