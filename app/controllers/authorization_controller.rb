@@ -17,7 +17,7 @@ class AuthorizationController < ApplicationController
           session[:new] = true
           authenticate_customer!
           session.delete(:new)
-          redirect_to callback_url(params[:redirect_uri], {:code => current_customer.generate_verification_code!})
+          redirect_to callback_url(params[:redirect_uri], {:code => current_customer.generate_verification_code!, :locale => I18n.locale})
         end
       end
     end
