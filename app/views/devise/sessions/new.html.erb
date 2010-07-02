@@ -5,9 +5,6 @@
         <%= link_to t('.home'), dvdpost_url %>
       </li>
       <li>
-        <%= link_to t('.help'), '/fr/faq' %>
-      </li>
-      <li>
         <%= switch_locale_link I18n.locale, {:id => 'lang'} %>
         <span id="lang-box">
           <% I18n.available_locales.each do |locale| %>
@@ -34,6 +31,9 @@
           <%= t '.pass_label' %>:<br />
           <%= f.password_field :password, :class => 'inputs_codes', :size => '35', :maxlength => '40'%>
         </p>
+        <% if alert %>
+          <p align="center" class="wrong"><%= t('.warning') %></p>
+        <% end %>
         <% if devise_mapping.rememberable? -%>
           <p class="check_login">
             <p>

@@ -13,6 +13,7 @@ en:
         forgot_pass: Vous avez oublié votre mot de passe?
         click_here: Click here
         connect: Connect
+        warning: Votre mot de passe ou votre login est incorrect.
 fr:
   devise:
     sessions:
@@ -28,6 +29,7 @@ fr:
         forgot_pass: Vous avez oublié votre mot de passe?
         click_here: Cliquez ici
         connect: Se connecter
+        warning: Votre mot de passe ou votre login est incorrect.
 nl:
   devise:
     sessions:
@@ -43,3 +45,4 @@ nl:
         forgot_pass: Vous avez oublié votre mot de passe?
         click_here: Cliquez ici
         connect: Se connecter
+        warning: Votre mot de passe ou votre login est incorrect.
