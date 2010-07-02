@@ -46,6 +46,6 @@ rspec_client:
   client_secret: dvdpost_rspec_client_secret
   redirect_uri: http://dvdpost.dev/callback
 php_test_client:
-  client_id: dvdpost_php_development_client
-  client_secret: dvdpost_php_development_client_secret
+  client_id: dvdpost_php_test_client
+  client_secret: dvdpost_php_test_client_secret
   redirect_uri: http://test
