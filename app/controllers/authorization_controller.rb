@@ -1,6 +1,6 @@
 class AuthorizationController < ApplicationController
   include AuthorizationHelper
-  before_filter :verify_token, :only => [:me, :sign_customer_out]
+  before_filter :verify_token, :only => [:me, :sign_customer_out, :remember_me]
 
   def new
     validate_type do
@@ -42,6 +42,17 @@ class AuthorizationController < ApplicationController
   def sign_customer_out # Should be sign_out but that conflicts with the Devise sign_out helper
     @customer.destroy_tokens!
     render :status => :ok, :json => {:logout => 'ok'}
+  end
+
+  def remember_me
+    redirect_uri = params[:redirect_uri]
+    if redirect_uri
+      sign_in(@customer)
+      authenticate_customer!
+      redirect_to redirect_uri
+    else
+      render_bad_request :invalid_redirect_uri
+    end
   end
 
   private
