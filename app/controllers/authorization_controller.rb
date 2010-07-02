@@ -51,7 +51,7 @@ class AuthorizationController < ApplicationController
         customer = Customer.find_by_verification_code(params[:code])
         generate_and_return_tokens customer, :invalid_authorization_code
       else
-        render_bad_request :invalid_authorization_code
+        render_unauthorized :invalid_authorization_code
       end
     end
   end
@@ -65,7 +65,7 @@ class AuthorizationController < ApplicationController
         generate_and_return_tokens customer, :invalid_refresh_token
       end
     else
-      render_bad_request :invalid_refresh_token
+      render_unauthorized :invalid_refresh_token
     end
   end
 
