@@ -16,4 +16,8 @@ module ApplicationHelper
   def dvdpost_url
     'http://www.dvdpost.be'
   end
+
+  def current_locale
+    session[:locale] || I18n.locale
+  end
 end
