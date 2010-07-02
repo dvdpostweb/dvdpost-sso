@@ -84,6 +84,7 @@ class AuthorizationController < ApplicationController
     if params[:username] && params[:password]
       customer = Customer.find_by_customers_email_address(params[:username])
       if customer && customer.valid_password?(params[:password])
+        customer.remember_me!
         generate_and_return_tokens customer, :invalid_user_credentials
       else
         render_unauthorized :invalid_user_credentials
