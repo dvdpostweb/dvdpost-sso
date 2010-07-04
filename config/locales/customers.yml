@@ -10,10 +10,10 @@ en:
         title: 'Welcome, identify yourself'
         email_label: Email-address
         pass_label: Password
-        forgot_pass: Vous avez oublié votre mot de passe?
+        forgot_pass: Password forgotten?
         click_here: Click here
         connect: Connect
-        warning: Votre mot de passe ou votre login est incorrect.
+        warning: Incorrect e-mail address and/or password
 fr:
   devise:
     sessions:
@@ -28,7 +28,7 @@ fr:
         pass_label: Mot de passe
         forgot_pass: Vous avez oublié votre mot de passe?
         click_here: Cliquez ici
-        connect: Se connecter
+        connect: Login
         warning: Votre mot de passe ou votre login est incorrect.
 nl:
   devise:
@@ -39,10 +39,10 @@ nl:
         en: English
         fr: Français
         nl: Nederlands
-        title: 'Bienvenue, Identifiez-vous'
+        title: 'Welkom, log je hier in'
         email_label: Adresse em-mail
         pass_label: Mot de passe
-        forgot_pass: Vous avez oublié votre mot de passe?
+        forgot_pass: Paswoord vergeten?
         click_here: Cliquez ici
-        connect: Se connecter
-        warning: Votre mot de passe ou votre login est incorrect.
+        connect: Login
+        warning: Dit is geen geldig e-mailadres en/of paswoord
