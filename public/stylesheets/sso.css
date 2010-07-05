@@ -133,3 +133,8 @@ body {
   width:117px;
   margin-top: -10px;
 }
+.wrong {
+  font-size:12px;
+  color:#FF4B00;
+  margin-top:-10px;
+}
