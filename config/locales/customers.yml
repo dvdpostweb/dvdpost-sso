@@ -40,8 +40,8 @@ nl:
         fr: Français
         nl: Nederlands
         title: 'Welkom, log je hier in'
-        email_label: Adresse em-mail
-        pass_label: Mot de passe
+        email_label: Adresse e-mail
+        pass_label: Paswoord
         forgot_pass: Paswoord vergeten?
         click_here: Klik hier
         connect: Login
