@@ -18,7 +18,7 @@ fr:
   devise:
     sessions:
       new:
-        home: Acceuil
+        home: Accueil
         help: Aide
         en: English
         fr: Français
