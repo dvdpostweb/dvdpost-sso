@@ -41,15 +41,15 @@ class Customer < ActiveRecord::Base
   end
 
   def valid_tokens?
-    authentication_token? and !access_token_expired?
+    authentication_token? && !access_token_expired?
   end
 
   def access_token_expired?
-     access_token_expires_at.blank? or (access_token_expires_at < Date.today)
+     access_token_expires_at.blank? || (access_token_expires_at < Date.today)
   end
 
   def refresh_token_expired?
-    refresh_token_expires_at.blank? or (refresh_token_expires_at < Date.today)
+    refresh_token_expires_at.blank? || (refresh_token_expires_at < Date.today)
   end
 
   def access_token_expires_in
