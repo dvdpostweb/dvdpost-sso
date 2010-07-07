@@ -8,5 +8,5 @@ group :test do
   gem 'rspec-rails', '>= 2.0.0.beta.13'
   gem 'sinatra', '~> 1.0'
   gem 'json'
-  gem 'oauth2', :git => 'git://github.com/jeroenj/oauth2.git'
-end
+end  
+gem 'oauth2', :git => 'git://github.com/jeroenj/oauth2.git'
