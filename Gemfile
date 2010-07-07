@@ -3,10 +3,11 @@ gem 'rails', '3.0.0.beta4'
 gem 'devise', :git => 'git://github.com/jeroenj/devise.git', :branch => 'legacy'
 gem 'mysql'
 
+# This one actually belongs to the test group, but it raises an exception if it's not bundled in other environments.
+gem 'oauth2', :git => 'git://github.com/jeroenj/oauth2.git'
 group :test do
   gem 'sqlite3-ruby'
   gem 'rspec-rails', '>= 2.0.0.beta.13'
   gem 'sinatra', '~> 1.0'
   gem 'json'
-end  
-gem 'oauth2', :git => 'git://github.com/jeroenj/oauth2.git'
+end

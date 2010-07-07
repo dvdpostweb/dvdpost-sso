@@ -4,33 +4,33 @@ dependencies:
     group: 
     - :default
     version: = 3.0.0.beta4
-  sqlite3-ruby: 
-    group: 
-    - :test
-    version: ">= 0"
   mysql: 
     group: 
     - :default
+    version: ">= 0"
+  sqlite3-ruby: 
+    group: 
+    - :test
     version: ">= 0"
   rspec-rails: 
     group: 
     - :test
     version: ">= 2.0.0.beta.13"
-  sinatra: 
-    group: 
-    - :test
-    version: ~> 1.0
-  devise: 
-    group: 
-    - :default
-    version: ">= 0"
   json: 
     group: 
     - :test
     version: ">= 0"
-  oauth2: 
+  devise: 
+    group: 
+    - :default
+    version: ">= 0"
+  sinatra: 
     group: 
     - :test
+    version: ~> 1.0
+  oauth2: 
+    group: 
+    - :default
     version: ">= 0"
 specs: 
 - rake: 
@@ -106,22 +106,22 @@ specs:
 - rails: 
     version: 3.0.0.beta4
 - rspec-core: 
-    version: 2.0.0.beta.15
+    version: 2.0.0.beta.16
 - rspec-expectations: 
-    version: 2.0.0.beta.15
+    version: 2.0.0.beta.16
 - rspec-mocks: 
-    version: 2.0.0.beta.15
+    version: 2.0.0.beta.16
 - rspec: 
-    version: 2.0.0.beta.15
+    version: 2.0.0.beta.16
 - webrat: 
     version: 0.7.1
 - rspec-rails: 
-    version: 2.0.0.beta.15
+    version: 2.0.0.beta.16
 - sinatra: 
     version: "1.0"
 - sqlite3-ruby: 
     version: 1.3.0
-hash: da45076b354101f123163548a1341ae3c129b79e
+hash: b84557d1f7104f887d11c8f8b75cfb7811c0f6c3
 sources: 
 - Git: 
     uri: git://github.com/jeroenj/oauth2.git
