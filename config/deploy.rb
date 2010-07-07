@@ -1,6 +1,8 @@
 set :stages, %w(staging production)
 set :default_stage, 'staging'
 require 'capistrano/ext/multistage'
+require 'config/boot'
+require 'hoptoad_notifier/capistrano'
 
 namespace :bundler do
   task :create_symlink, :roles => :app do
@@ -16,3 +18,4 @@ namespace :bundler do
 end
 
 after 'deploy:symlink', 'bundler:bundle_new_release'
+
