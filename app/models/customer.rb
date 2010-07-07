@@ -62,6 +62,8 @@ class Customer < ActiveRecord::Base
     destroy_attribute :refresh_token
     destroy_attribute :refresh_token_expires_at
     destroy_attribute :access_token_expires_at
+    destroy_attribute :remember_token
+    destroy_attribute :remember_created_at
   end
 
   private
