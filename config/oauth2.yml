@@ -15,6 +15,10 @@ php_com_client:
   client_id: dvdpost_com_php_client
   client_secret: dvdpost_com_php_client_secret
   redirect_uri: http://www.dvdpost.com
+iphone_client:
+  client_id: dvdpost_iphone_client
+  client_secret: dvdpost_iphone_client_secret
+  redirect_uri: http://www.dvdpost.com # This one is actually not required
 
 # Pre production clients
 rails_pre_prod_client:
