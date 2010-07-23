@@ -1,11 +1,10 @@
-# development is needed here in order for rake db:test:load to work
+test: &TEST
+  adapter: sqlite3
+  database: db/test.sqlite3
+  pool: 5
+  timeout: 5000
+# development and production are needed here in order for rake db:test:load to work
 development:
-  adapter: sqlite3
-  database: db/test.sqlite3
-  pool: 5
-  timeout: 5000
-test:
-  adapter: sqlite3
-  database: db/test.sqlite3
-  pool: 5
-  timeout: 5000
+  <<: *TEST
+production:
+  <<: *TEST
