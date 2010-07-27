@@ -24,8 +24,8 @@ describe AuthorizationController, "Authorization" do
 
     Customer.destroy_all
     @customer = Customer.new
-    @customer.update_attribute :email, @username
-    @customer.update_attribute :password, '5ebe2294ecd0e0f08eab7690d2a6ee69' # => secret
+    @customer.update_attribute :customers_email_address, @username
+    @customer.update_attribute :customers_password, '5ebe2294ecd0e0f08eab7690d2a6ee69' # => secret
   end
 
   context "new" do
@@ -242,7 +242,7 @@ describe AuthorizationController, "Authorization" do
 
     it "should return an access token, refresh token and expiry date if a correct username and password were given" do
       post :token, @valid_user_basic_params.merge(:username => @username, :password => @password)
-      tokens =  JSON.parse(response.body)
+      tokens = JSON.parse(response.body)
       customer = Customer.find_by_customers_email_address(@username)
       tokens['access_token'].should == customer.authentication_token
       tokens['refresh_token'].should == customer.refresh_token
