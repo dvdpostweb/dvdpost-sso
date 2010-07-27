@@ -46,6 +46,7 @@ get '/refresh' do
   session[:expires_in] = access_token.expires_in
   session[:refresh_token] = access_token.refresh_token
   puts "*** Session: #{session.inspect} ***"
+  redirect "me?token=#{access_token.token}" # Internal redirect to directly make a test call to the SSO
 end
 
 get '/basic' do
