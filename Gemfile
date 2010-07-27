@@ -11,8 +11,8 @@ gem 'oauth2', :git => 'git://github.com/jeroenj/oauth2.git'
 
 group :test do
   gem 'sqlite3-ruby'
-  gem 'rspec', '>= 2.0.0.beta.18'
-  gem 'rspec-rails', '>= 2.0.0.beta.18'
+  gem 'rspec', '>= 2.0.0.beta.19'
+  gem 'rspec-rails', '>= 2.0.0.beta.19'
   gem 'sinatra', '~> 1.0'
   gem 'json'
 end

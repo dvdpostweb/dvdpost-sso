@@ -3,7 +3,7 @@ require 'rake'
 namespace :ci do
   desc 'Prepare for CI'
   task :prepare do
-    `bundle install --relock`
+    `bundle install`
     `mv config/database.yml.ci config/database.yml`
     `mv db/test_schema.rb db/schema.rb`
     `rake db:test:load`
