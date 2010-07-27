@@ -25,7 +25,6 @@ class AuthorizationController < ApplicationController
 
   def token
     validate_client do
-      # params[:client_secret] == 'some_secret' # Clients should be reigstered and their secret should be validated too
       case params[:grant_type]
         when 'authorization_code' then authorization_code(params)
         when 'refresh_token'      then refresh_token(params)
