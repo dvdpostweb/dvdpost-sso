@@ -1,4 +1,4 @@
-DvdpostSso::Application.routes.draw do |map|
+DvdpostSso::Application.routes.draw do
   devise_for :customers
 
   controller :authorization do
