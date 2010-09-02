@@ -8,8 +8,8 @@ GIT
       warden (~> 0.10.7)
 
 GIT
-  remote: git://github.com/jeroenj/oauth2.git
-  revision: bdd30ea
+  remote: git://github.com/redstorm/oauth2.git
+  revision: bdd30ea98405405924a674a66a58426747105700
   specs:
     oauth2 (0.0.10)
       faraday (~> 0.4.1)
@@ -45,7 +45,7 @@ GEM
       activemodel (= 3.0.0.beta4)
       activesupport (= 3.0.0.beta4)
     activesupport (3.0.0.beta4)
-    addressable (2.1.2)
+    addressable (2.2.0)
     arel (0.4.0)
       activesupport (>= 3.0.0.beta)
     bcrypt-ruby (2.1.2)
