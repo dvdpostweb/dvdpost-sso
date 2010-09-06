@@ -50,8 +50,8 @@ namespace :deploy do
       database: dvdpost_test
       username: test_devuser
       password: 1nterD3nt
-      host: www.dvdpost.be
-      port: 43306
+      host: 192.168.100.204
+      port: 3306
     EOF
 
     put db_config, "#{release_path}/config/database.yml"
