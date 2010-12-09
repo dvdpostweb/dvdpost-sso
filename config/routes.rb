@@ -1,6 +1,6 @@
 DvdpostSso::Application.routes.draw do
   devise_for :customers
-
+  
   controller :authorization do
     namespace :authorization do
       get  'new',   :to => :new

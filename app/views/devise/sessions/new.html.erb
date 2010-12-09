@@ -31,7 +31,7 @@
           <%= t '.pass_label' %>:<br />
           <%= f.password_field :password, :class => 'inputs_codes', :size => '35', :maxlength => '40'%>
         </p>
-        <% if alert %>
+        <% if alert && !alert.empty?%>
           <p align="center" class="wrong"><%= t('.warning') %></p>
         <% end %>
         <% if devise_mapping.rememberable? -%>
