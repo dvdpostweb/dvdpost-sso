@@ -5,6 +5,7 @@ class Customer < ActiveRecord::Base
 
   alias_attribute :email, :customers_email_address
   alias_attribute :password, :customers_password
+  
 
   devise :database_authenticatable, :validatable, :token_authenticatable, :rememberable #, :recoverable, :registerable
 

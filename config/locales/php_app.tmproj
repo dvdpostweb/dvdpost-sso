@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>../../../../site_local/website/branches/newconnection/ogone_process.php</string>
+	<string>../../../../site_local/website/branches/newconnection/configure/configure_machine_specific.php</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -36,13 +36,13 @@
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/activation_code_confirm.php</string>
 			<key>lastUsed</key>
-			<date>2010-11-29T10:58:48Z</date>
+			<date>2010-12-09T10:07:25Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/activation_code_process.php</string>
 			<key>lastUsed</key>
-			<date>2010-12-08T09:54:34Z</date>
+			<date>2010-12-09T10:06:31Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -963,6 +963,8 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/login.php</string>
+			<key>lastUsed</key>
+			<date>2010-12-09T16:42:30Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -1164,9 +1166,7 @@
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/ogone_process.php</string>
 			<key>lastUsed</key>
-			<date>2010-12-08T14:43:30Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2010-12-09T14:16:19Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -1593,6 +1593,10 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/step1.php</string>
+			<key>lastUsed</key>
+			<date>2010-12-09T14:16:19Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -1911,72 +1915,118 @@
 	<integer>360</integer>
 	<key>metaData</key>
 	<dict>
-		<key>../../../../site_local/website/branches/newconnection/includes/classes/activation_code_actions_class/gfc.php</key>
+		<key>../../../../site_local/website/branches/newconnection/auth/examples/example2.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>104</integer>
+				<integer>45</integer>
 				<key>line</key>
-				<integer>17</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>../../../../site_local/website/branches/newconnection/includes/functions/database.php</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>122</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>91</integer>
-		</dict>
-		<key>../../../../site_local/website/branches/newconnection/includes/functions/general.php</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>2369</integer>
+				<integer>181</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>2338</integer>
+			<integer>123</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>41</integer>
 				<key>line</key>
-				<integer>2366</integer>
+				<integer>181</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>49</integer>
 				<key>line</key>
-				<integer>2369</integer>
+				<integer>181</integer>
 			</dict>
 		</dict>
-		<key>../../../../site_local/website/branches/newconnection/ogone_process.php</key>
+		<key>../../../../site_local/website/branches/newconnection/auth/src/authentification.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>28</integer>
 				<key>line</key>
-				<integer>15</integer>
+				<integer>41</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>1</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>22</integer>
+				<key>line</key>
+				<integer>41</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>28</integer>
+				<key>line</key>
+				<integer>41</integer>
+			</dict>
+		</dict>
+		<key>../../../../site_local/website/branches/newconnection/auth/src/facebook.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>34</integer>
+				<key>line</key>
+				<integer>107</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>75</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>27</integer>
+				<key>line</key>
+				<integer>107</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>34</integer>
+				<key>line</key>
+				<integer>107</integer>
+			</dict>
+		</dict>
+		<key>../../../../site_local/website/branches/newconnection/configure/configure_machine_specific.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>51</integer>
+				<key>line</key>
+				<integer>40</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>8</integer>
+		</dict>
+		<key>../../../../site_local/website/branches/newconnection/login.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>39</integer>
+				<key>line</key>
+				<integer>16</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -1986,10 +2036,11 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>../../../../site_local/website/branches/newconnection/includes/functions/general.php</string>
-		<string>../../../../site_local/website/branches/newconnection/includes/functions/database.php</string>
-		<string>../../../../site_local/website/branches/newconnection/includes/classes/activation_code_actions_class/gfc.php</string>
-		<string>../../../../site_local/website/branches/newconnection/ogone_process.php</string>
+		<string>../../../../site_local/website/branches/newconnection/login.php</string>
+		<string>../../../../site_local/website/branches/newconnection/auth/examples/example2.php</string>
+		<string>../../../../site_local/website/branches/newconnection/auth/src/authentification.php</string>
+		<string>../../../../site_local/website/branches/newconnection/auth/src/facebook.php</string>
+		<string>../../../../site_local/website/branches/newconnection/configure/configure_machine_specific.php</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
