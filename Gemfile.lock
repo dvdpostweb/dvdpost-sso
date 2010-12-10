@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/plataformatec/devise.git
+  revision: 7ed1fb116f163842d8013152d8875605179557ec
+  specs:
+    devise (1.2.rc)
+      bcrypt-ruby (~> 2.1.2)
+      orm_adapter (~> 0.0.2)
+      warden (~> 1.0.2)
+
+GIT
   remote: git://github.com/redstorm/oauth2.git
   revision: bdd30ea98405405924a674a66a58426747105700
   specs:
@@ -41,9 +50,6 @@ GEM
       activesupport (~> 3.0.0)
     bcrypt-ruby (2.1.2)
     builder (2.1.2)
-    devise (1.1.5)
-      bcrypt-ruby (~> 2.1.2)
-      warden (~> 1.0.2)
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -62,6 +68,7 @@ GEM
     mime-types (1.16)
     multi_json (0.0.4)
     mysql (2.8.1)
+    orm_adapter (0.0.3)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -108,7 +115,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  devise
+  devise!
   hoptoad_notifier
   json
   mysql
