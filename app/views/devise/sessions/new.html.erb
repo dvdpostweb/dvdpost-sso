@@ -32,7 +32,7 @@
           <%= f.password_field :password, :class => 'inputs_codes', :size => '35', :maxlength => '40'%>
         </p>
         <% if alert && !alert.empty?%>
-          <p align="center" class="wrong"><%= t('.warning') %></p>
+          <p align="center" class="wrong"><%= t('.warning') %> <%= t('.alert')%></p>
         <% end %>
         <% if devise_mapping.rememberable? -%>
           <p class="check_login">
