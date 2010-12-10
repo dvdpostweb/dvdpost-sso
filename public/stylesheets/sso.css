@@ -107,9 +107,9 @@ body {
   color:#000;
   font:14px Arial,Helvetica,sans-serif;
   margin-left:3px;
-  padding-left:15px;
+  padding: 5px 0 5px 15px;
   width:329px;
-  height:28px;
+  height:18px;
 }
 
 .link_forget {
