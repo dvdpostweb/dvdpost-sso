@@ -1,4 +1,13 @@
 # pack-refs with: peeled 
+c698e44d10cc1cd4a6f687ab41d3be84e0545b5a refs/tags/v1.4.8
+e4902af15a572843716aef2affab5a768cc473df refs/tags/v1.4.7
+08a8d7bf51784acd9e242402118278a49809245f refs/tags/v1.4.6
+ede06b083fc7f697bbe3bc42beee8a9ee34cf430 refs/tags/v1.4.5
+071f54ac59502c42ff616b9bea2b1895d6155d64 refs/tags/v1.4.4
+ef4eb47d5016b710a628187e4765ac4606ed69ae refs/tags/v1.4.3
+7a2e018df807d8e20d6c5850f569c86b13a65725 refs/tags/v1.4.2
+82ae53dd75f81533fc2dfb277ce5a85be230868c refs/tags/v1.4.1
+dba8f91f99dce0e102ad2e6aa78b142a92833bc3 refs/tags/v1.4.0
 9f763d082a51d5b0c50c884b044a8900faada8bf refs/tags/v1.3.4
 39b59142ea288dca18d45771de94fd88b5d4621b refs/tags/v1.3.3
 76edb49c9d9c8ab89a11341792efc47f3f66fcc4 refs/tags/v1.3.2
@@ -43,10 +52,11 @@ d1dc18cb1a5f2a91f70be0d574146e8f9dc38b12 refs/tags/v0.8.2
 c4764c931ab1d7a0ceacc6ac0cb6fdf6d019e97d refs/tags/v0.8.1
 d00c31314d6dc8692ee1697c3ed6516b74672636 refs/tags/v0.8.0
 7c67388a90afc7f356e7b3217df91400001d1043 refs/tags/v0.7.5
+c698e44d10cc1cd4a6f687ab41d3be84e0545b5a refs/heads/v1.4
 9f763d082a51d5b0c50c884b044a8900faada8bf refs/heads/v1.3
 c42a86957ae3ce5955e9da2eaf604e1e3125693e refs/heads/v1.2.oauth
 5ce5843888b827ac76ef0c4cf21c4f6e2f79fb74 refs/heads/v1.2
 8e0d517cdb07e1c7326923155947706e030fc992 refs/heads/v1.1
-15fd736f07b5c5e0acb2e2faa3904d582333d934 refs/heads/v1.0
-ecf871a716eda6f1c77352a1c50f7f25b18c2bbc refs/heads/paranoid-mode
-97659a1193aca1e8d0136e52d036b14473f6dd9b refs/heads/master
+efc42d7662f3eebbc199965cfd546d0360738a18 refs/heads/v1.0
+2372823fd8d1de9241b399054175108053e0590a refs/heads/master
+c1d14d02cb908407a1ca9fb41f4388adcc82f5af refs/heads/issue-email-uniqueness

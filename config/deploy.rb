@@ -3,3 +3,6 @@ set :default_stage, 'staging'
 require 'capistrano/ext/multistage'
 require 'hoptoad_notifier/capistrano'
 require 'bundler/capistrano'
+
+        require './config/boot'
+        require 'airbrake/capistrano'
