@@ -33,7 +33,7 @@ set :scm, :git
 set :branch, "master"
 set :scm_user, 'sso'
 set :scm_passphrase, "[y'|\E7U158]9*"
-set :repository, "git@github.com:redstorm/dvdpost-sso.git"
+set :repository, "git@github.com:dvdpost/dvdpost-sso.git"
 set :deploy_via, :remote_cache
 
 #############################################################

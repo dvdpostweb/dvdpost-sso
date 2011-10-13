@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>../../../../site_local/website/branches/newconnection/configure/configure_machine_specific.php</string>
+	<string>../../../../site_local/website/branches/newconnection/blacklist/categorie.php</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -30,23 +30,33 @@
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/actions.php</string>
 			<key>lastUsed</key>
-			<date>2010-12-08T09:54:39Z</date>
+			<date>2011-03-09T14:22:13Z</date>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>eda</string>
+			<key>regexFolderFilter</key>
+			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>sourceDirectory</key>
+			<string>../../../../site_local/website/branches/newconnection/eda</string>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/activation_code_confirm.php</string>
 			<key>lastUsed</key>
-			<date>2010-12-09T10:07:25Z</date>
+			<date>2011-04-04T14:50:52Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/activation_code_process.php</string>
 			<key>lastUsed</key>
-			<date>2010-12-09T10:06:31Z</date>
+			<date>2011-04-05T09:39:36Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/activation_code.php</string>
+			<key>lastUsed</key>
+			<date>2011-04-05T08:52:10Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -59,6 +69,8 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/actors.php</string>
+			<key>lastUsed</key>
+			<date>2011-05-04T09:56:10Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -79,6 +91,8 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/add_wishlist_new.php</string>
+			<key>lastUsed</key>
+			<date>2011-03-30T11:54:50Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -112,7 +126,7 @@
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/addtowishlist_adult.php</string>
 			<key>lastUsed</key>
-			<date>2010-12-02T15:37:41Z</date>
+			<date>2011-02-09T10:10:47Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -163,6 +177,8 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/ajax.action.php</string>
+			<key>lastUsed</key>
+			<date>2011-01-12T11:03:22Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -187,6 +203,8 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/basic_reconduction_process.php</string>
+			<key>lastUsed</key>
+			<date>2011-01-25T10:14:09Z</date>
 		</dict>
 		<dict>
 			<key>name</key>
@@ -197,6 +215,8 @@
 			<string>../../../../site_local/website/branches/newconnection/belgie</string>
 		</dict>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>blacklist</string>
 			<key>regexFolderFilter</key>
@@ -207,6 +227,8 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/callback.php</string>
+			<key>lastUsed</key>
+			<date>2011-01-26T09:16:57Z</date>
 		</dict>
 		<dict>
 			<key>name</key>
@@ -231,6 +253,8 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/catalog.php</string>
+			<key>lastUsed</key>
+			<date>2011-07-07T08:25:37Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -256,7 +280,7 @@
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/change_client_password.php</string>
 			<key>lastUsed</key>
-			<date>2010-12-08T09:54:29Z</date>
+			<date>2011-01-17T14:30:22Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -269,6 +293,12 @@
 			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
 			<key>sourceDirectory</key>
 			<string>../../../../site_local/website/branches/newconnection/charts</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>../../../../site_local/website/branches/newconnection/step4.php</string>
+			<key>lastUsed</key>
+			<date>2011-04-05T13:04:28Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -325,14 +355,24 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/contact_public.php</string>
+			<key>lastUsed</key>
+			<date>2011-01-25T09:02:00Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/contact.php</string>
+			<key>lastUsed</key>
+			<date>2011-01-25T08:58:18Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/contest_process_public.php</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>../../../../site_local/website/branches/newconnection/ogone_process.php</string>
+			<key>lastUsed</key>
+			<date>2011-04-15T11:52:51Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -350,7 +390,7 @@
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/create_account_process.php</string>
 			<key>lastUsed</key>
-			<date>2010-12-08T09:54:23Z</date>
+			<date>2011-08-22T07:55:28Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -369,6 +409,8 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/custsercodes.php</string>
+			<key>lastUsed</key>
+			<date>2011-04-22T14:42:42Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -557,10 +599,14 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/custservaddtitles_process.php</string>
+			<key>lastUsed</key>
+			<date>2011-04-22T14:42:47Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/custservaddtitles.php</string>
+			<key>lastUsed</key>
+			<date>2011-04-22T14:39:18Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -581,6 +627,8 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/default.php</string>
+			<key>lastUsed</key>
+			<date>2011-01-25T15:54:13Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -598,7 +646,7 @@
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/domiciliation70_pending.php</string>
 			<key>lastUsed</key>
-			<date>2010-12-08T09:54:19Z</date>
+			<date>2011-01-17T14:04:14Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -668,11 +716,13 @@
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/error.php</string>
 			<key>lastUsed</key>
-			<date>2010-12-08T09:54:06Z</date>
+			<date>2011-09-15T08:13:42Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/exell_reconduction.php</string>
+			<key>lastUsed</key>
+			<date>2011-01-25T10:15:22Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -713,6 +763,8 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/flag.php</string>
+			<key>lastUsed</key>
+			<date>2011-05-05T15:02:40Z</date>
 		</dict>
 		<dict>
 			<key>name</key>
@@ -849,18 +901,20 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/how_public.php</string>
+			<key>lastUsed</key>
+			<date>2011-03-28T14:09:20Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/how.php</string>
+			<key>lastUsed</key>
+			<date>2011-03-28T14:09:20Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/howtorent.php</string>
 		</dict>
 		<dict>
-			<key>expanded</key>
-			<true/>
 			<key>name</key>
 			<string>includes</string>
 			<key>regexFolderFilter</key>
@@ -871,6 +925,8 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/index.php</string>
+			<key>lastUsed</key>
+			<date>2011-04-22T14:58:04Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -878,7 +934,9 @@
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>../../../../site_local/website/branches/newconnection/invitation.php</string>
+			<string>../../../../site_local/website/branches/newconnection/price.php</string>
+			<key>lastUsed</key>
+			<date>2011-05-16T13:26:40Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -889,6 +947,8 @@
 			<string>../../../../site_local/website/branches/newconnection/jobs.php</string>
 		</dict>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>js</string>
 			<key>regexFolderFilter</key>
@@ -909,10 +969,14 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/listing_category_adult.php</string>
+			<key>lastUsed</key>
+			<date>2011-05-03T12:59:03Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/listing_category_public.php</string>
+			<key>lastUsed</key>
+			<date>2011-04-01T13:24:22Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -933,6 +997,8 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/login_adultpwd_forgot_process.php</string>
+			<key>lastUsed</key>
+			<date>2011-01-17T14:30:20Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -993,6 +1059,8 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/member_get_member_mail.php</string>
+			<key>lastUsed</key>
+			<date>2010-12-15T14:49:22Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -1013,6 +1081,8 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/member_get_member_process.php</string>
+			<key>lastUsed</key>
+			<date>2011-01-07T15:58:59Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -1053,6 +1123,8 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/my_recommandation_process.php</string>
+			<key>lastUsed</key>
+			<date>2011-01-17T14:30:20Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -1097,10 +1169,14 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/mydvdshop.php</string>
+			<key>lastUsed</key>
+			<date>2011-04-28T10:05:07Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/mydvdxpost.php</string>
+			<key>lastUsed</key>
+			<date>2011-05-31T12:48:39Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -1148,6 +1224,12 @@
 		</dict>
 		<dict>
 			<key>filename</key>
+			<string>../../../../site_local/website/branches/newconnection/pointvirgule.php</string>
+			<key>lastUsed</key>
+			<date>2011-01-05T13:58:12Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/mywishlistupdate3.php</string>
 		</dict>
 		<dict>
@@ -1161,20 +1243,26 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/ogone_change.php</string>
+			<key>lastUsed</key>
+			<date>2011-01-13T14:32:43Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>../../../../site_local/website/branches/newconnection/ogone_process.php</string>
+			<string>../../../../site_local/website/branches/newconnection/ogone_process_new_site.php</string>
 			<key>lastUsed</key>
-			<date>2010-12-09T14:16:19Z</date>
+			<date>2011-04-05T13:04:27Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/ogone_redirect.php</string>
+			<key>lastUsed</key>
+			<date>2011-03-11T13:39:51Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/ogone_vod_redirect.php</string>
+			<key>lastUsed</key>
+			<date>2011-01-13T09:43:09Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -1193,6 +1281,8 @@
 			<string>../../../../site_local/website/branches/newconnection/pages</string>
 		</dict>
 		<dict>
+			<key>expanded</key>
+			<true/>
 			<key>name</key>
 			<string>partial</string>
 			<key>regexFolderFilter</key>
@@ -1203,6 +1293,8 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/password_forgotten.php</string>
+			<key>lastUsed</key>
+			<date>2011-01-17T14:30:18Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -1243,10 +1335,14 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/product_info_adult.php</string>
+			<key>lastUsed</key>
+			<date>2011-03-09T14:22:45Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>../../../../site_local/website/branches/newconnection/product_info_public.php</string>
+			<string>../../../../site_local/website/branches/newconnection/crossdomain.xml</string>
+			<key>lastUsed</key>
+			<date>2011-03-09T16:26:59Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -1275,6 +1371,8 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/promo.php</string>
+			<key>lastUsed</key>
+			<date>2011-03-28T14:09:21Z</date>
 		</dict>
 		<dict>
 			<key>name</key>
@@ -1561,6 +1659,8 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/step_check.php</string>
+			<key>lastUsed</key>
+			<date>2011-05-09T15:41:08Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -1594,39 +1694,43 @@
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/step1.php</string>
 			<key>lastUsed</key>
-			<date>2010-12-09T14:16:19Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2011-07-29T14:02:33Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/step1b.php</string>
+			<key>lastUsed</key>
+			<date>2010-12-22T14:02:10Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/step2b.php</string>
+			<key>lastUsed</key>
+			<date>2011-02-28T14:59:51Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/step3b.php</string>
 			<key>lastUsed</key>
-			<date>2010-11-29T10:59:39Z</date>
+			<date>2011-07-29T14:02:31Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/step3c.php</string>
 			<key>lastUsed</key>
-			<date>2010-12-08T09:52:49Z</date>
+			<date>2011-01-05T13:58:14Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/step3d.php</string>
+			<key>lastUsed</key>
+			<date>2011-02-28T14:59:52Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>../../../../site_local/website/branches/newconnection/step4.php</string>
+			<string>../../../../site_local/website/branches/newconnection/jacob_step4.php</string>
 			<key>lastUsed</key>
-			<date>2010-12-08T09:52:54Z</date>
+			<date>2011-01-27T14:40:06Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -1781,6 +1885,8 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/survey.php</string>
+			<key>lastUsed</key>
+			<date>2011-01-20T08:56:11Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -1853,20 +1959,26 @@
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/vod_code_order.php</string>
+			<key>lastUsed</key>
+			<date>2011-05-30T11:35:36Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/vod_code_process.php</string>
+			<key>lastUsed</key>
+			<date>2011-01-10T16:17:36Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/vod_download.php</string>
 			<key>lastUsed</key>
-			<date>2010-12-08T10:02:03Z</date>
+			<date>2011-01-17T14:30:17Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>../../../../site_local/website/branches/newconnection/vod_order_conf.php</string>
+			<key>lastUsed</key>
+			<date>2011-01-10T16:17:33Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -1912,119 +2024,59 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>360</integer>
+	<integer>311</integer>
 	<key>metaData</key>
 	<dict>
-		<key>../../../../site_local/website/branches/newconnection/auth/examples/example2.php</key>
+		<key>../../../../site_local/website/branches/newconnection/blacklist/categorie.php</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>45</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>181</integer>
+				<integer>42</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>../../../../site_local/website/branches/newconnection/canvas/canvas_step.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>30</integer>
+				<key>line</key>
+				<integer>343</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>123</integer>
+			<integer>311</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>41</integer>
+				<integer>26</integer>
 				<key>line</key>
-				<integer>181</integer>
+				<integer>343</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>49</integer>
+				<integer>30</integer>
 				<key>line</key>
-				<integer>181</integer>
+				<integer>343</integer>
 			</dict>
 		</dict>
-		<key>../../../../site_local/website/branches/newconnection/auth/src/authentification.php</key>
+		<key>../../../../site_local/website/branches/newconnection/js/step3_jquery.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>28</integer>
-				<key>line</key>
-				<integer>41</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>1</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>22</integer>
-				<key>line</key>
-				<integer>41</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>28</integer>
-				<key>line</key>
-				<integer>41</integer>
-			</dict>
-		</dict>
-		<key>../../../../site_local/website/branches/newconnection/auth/src/facebook.php</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>34</integer>
-				<key>line</key>
-				<integer>107</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>75</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>27</integer>
-				<key>line</key>
-				<integer>107</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>34</integer>
-				<key>line</key>
-				<integer>107</integer>
-			</dict>
-		</dict>
-		<key>../../../../site_local/website/branches/newconnection/configure/configure_machine_specific.php</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>51</integer>
-				<key>line</key>
-				<integer>40</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>8</integer>
-		</dict>
-		<key>../../../../site_local/website/branches/newconnection/login.php</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>39</integer>
+				<integer>0</integer>
 				<key>line</key>
 				<integer>16</integer>
 			</dict>
@@ -2033,18 +2085,44 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>../../../../site_local/website/branches/newconnection/ogone_process.php</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>207</integer>
+				<key>line</key>
+				<integer>268</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>234</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>166</integer>
+				<key>line</key>
+				<integer>268</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>207</integer>
+				<key>line</key>
+				<integer>268</integer>
+			</dict>
+		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>../../../../site_local/website/branches/newconnection/login.php</string>
-		<string>../../../../site_local/website/branches/newconnection/auth/examples/example2.php</string>
-		<string>../../../../site_local/website/branches/newconnection/auth/src/authentification.php</string>
-		<string>../../../../site_local/website/branches/newconnection/auth/src/facebook.php</string>
-		<string>../../../../site_local/website/branches/newconnection/configure/configure_machine_specific.php</string>
+		<string>../../../../site_local/website/branches/newconnection/blacklist/categorie.php</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{363, 6}, {1482, 1172}}</string>
+	<string>{{314, 0}, {1522, 1178}}</string>
 </dict>
 </plist>
