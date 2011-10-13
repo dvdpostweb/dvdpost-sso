@@ -1,36 +1,18 @@
-source "http://rubygems.org"
+source 'http://rubygems.org'
 
-gemspec
+gem 'rails', '3.0.3'
+gem 'rake', '0.9.0'
+gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
+gem 'mysql'
 
-gem "rails", "~> 3.1.0"
-gem "oa-oauth", '~> 0.2.0', :require => "omniauth/oauth"
-gem "oa-openid", '~> 0.2.0', :require => "omniauth/openid"
+gem "airbrake"
 
-gem "rdoc"
+# This one actually belongs to the test group, but it raises an exception if it's not bundled in other environments.
+gem 'oauth2', :git => 'git://github.com/redstorm/oauth2.git'
 
 group :test do
-  gem "webrat", "0.7.2", :require => false
-  gem "mocha", :require => false
-end
-
-platforms :jruby do
-  gem 'activerecord-jdbc-adapter', :git => 'https://github.com/nicksieger/activerecord-jdbc-adapter.git'
-  gem 'activerecord-jdbcsqlite3-adapter'
-  gem 'jruby-openssl'
-end
-
-platforms :mri_18 do
-  group :test do
-    gem "ruby-debug", ">= 0.10.3"
-  end
-end
-
-platforms :ruby do
-  gem "sqlite3-ruby"
-
-  group :mongoid do
-    gem "mongo", "~> 1.3.0"
-    gem "mongoid", "~> 2.0"
-    gem "bson_ext", "~> 1.3.0"
-  end
+  gem 'rspec', '>= 2.0.0.beta.19'
+  gem 'rspec-rails', '>= 2.0.0.beta.19'
+  gem 'sinatra', '~> 1.0'
+  gem 'json'
 end

@@ -1,0 +1,3 @@
+* Right now we do not validate client_id. We should!
+* Once we validate client_id's, we should also validate redirect_uri's
+* We should also use a client_secret together with the client_id.

@@ -1,0 +1,48 @@
+en:
+  devise:
+    sessions:
+      new:
+        home: Home
+        help: Help
+        en: English
+        fr: Français
+        nl: Nederlands
+        title: 'Welcome, identify yourself'
+        email_label: Email-address
+        pass_label: Password
+        forgot_pass: Password forgotten?
+        click_here: Click here
+        connect: Connect
+        warning: Incorrect e-mail address and/or password
+fr:
+  devise:
+    sessions:
+      new:
+        home: Accueil
+        help: Aide
+        en: English
+        fr: Français
+        nl: Nederlands
+        title: 'Bienvenue, Identifiez-vous'
+        email_label: Adresse e-mail
+        pass_label: Mot de passe
+        forgot_pass: Vous avez oublié votre mot de passe?
+        click_here: Cliquez ici
+        connect: Login
+        warning: Votre mot de passe ou votre login est incorrect.
+nl:
+  devise:
+    sessions:
+      new:
+        home: Home
+        help: Help
+        en: English
+        fr: Français
+        nl: Nederlands
+        title: 'Welkom, log je hier in'
+        email_label: E-mailadres
+        pass_label: Paswoord
+        forgot_pass: Paswoord vergeten?
+        click_here: Klik hier
+        connect: Login
+        warning: Dit is geen geldig e-mailadres en/of paswoord

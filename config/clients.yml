@@ -1,0 +1,3 @@
+rails:
+  id: 1
+  secret: some_secret
