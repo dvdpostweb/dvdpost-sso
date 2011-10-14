@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.3'
-gem 'rake', '0.9.0'
+#gem 'rake', '0.9.0'
 gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
 gem 'mysql'
 
