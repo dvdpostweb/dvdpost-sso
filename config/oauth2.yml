@@ -27,6 +27,10 @@ rails_pre_prod_client:
   redirect_uri: http://beta.dvdpost.com/locale/callback
 
 # Development clients
+iphone_development_client:
+  client_id: dvdpost_rails_development_client
+  client_secret: dvdpost_rails_development_client_secret
+  redirect_uri: http://iphone.dvdpost.dev/locale/callback
 rails_development_client:
   client_id: dvdpost_rails_development_client
   client_secret: dvdpost_rails_development_client_secret
@@ -35,6 +39,10 @@ rails_staging_client:
   client_id: dvdpost_rails_staging_client
   client_secret: dvdpost_rails_staging_client_secret
   redirect_uri: http://staging.dvdpost.be/locale/callback
+rails_iphone_staging_client:
+  client_id: dvdpost_rails_staging_client
+  client_secret: dvdpost_rails_staging_client_secret
+  redirect_uri: http://staging.iphone.dvdpost.be/locale/callback
 php_development_client:
   client_id: dvdpost_php_development_client
   client_secret: dvdpost_php_development_client_secret
