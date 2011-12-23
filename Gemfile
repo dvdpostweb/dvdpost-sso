@@ -4,7 +4,7 @@ gem 'rails', '~> 3.0.7'
 
 gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
 gem 'mysql'
-
+gem 'capistrano-ext', :require => 'capistrano'
 gem "airbrake"
 
 # This one actually belongs to the test group, but it raises an exception if it's not bundled in other environments.
