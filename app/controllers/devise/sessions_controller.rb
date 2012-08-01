@@ -1,6 +1,7 @@
 class Devise::SessionsController < ApplicationController
   prepend_before_filter :require_no_authentication, :only => [ :new, :create ]
   prepend_before_filter :allow_params_authentication!, :only => :create
+  before_filter :set_title
   include Devise::Controllers::InternalHelpers
 
   # GET /resource/sign_in
@@ -37,6 +38,10 @@ class Devise::SessionsController < ApplicationController
   end
 
   protected
+
+  def set_title
+    @title = 'DVDPost login'
+  end
 
   def stub_options(resource)
     methods = resource_class.authentication_keys.dup

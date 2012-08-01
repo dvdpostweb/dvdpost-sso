@@ -158,6 +158,7 @@ module Devise
       #
       def stored_location_for(resource_or_scope)
         scope = Devise::Mapping.find_scope!(resource_or_scope)
+        scope
         session.delete("#{scope}_return_to")
       end
 

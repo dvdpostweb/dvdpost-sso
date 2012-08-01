@@ -1,6 +1,6 @@
 module ApplicationHelper
   def switch_locale_link(locale, options=nil)
-    link_to t(".#{locale}"), params.merge(:locale => locale), options
+    link_to locale.to_s.upcase, params.merge(:locale => locale), options
   end
 
   def callback_url(uri, params)

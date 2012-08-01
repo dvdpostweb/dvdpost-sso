@@ -7,17 +7,32 @@ class AuthorizationController < ApplicationController
       validate_client do
         validate_redirect_uri do
           if current_customer
+            session.delete(:customer_return_to)
             unless session[:new] or current_customer.valid_tokens?
               current_customer.forget_me!
               current_customer.destroy_tokens!
               sign_out current_customer
             end
           end
-          # We're using session[:new] for the redirect (to this action) after authentication. Otherwise it would destroy current_customer all over again.
-          session[:new] = true
-          authenticate_customer!
-          session.delete(:new)
-          redirect_to callback_url(params[:redirect_uri], {:code => current_customer.generate_verification_code!, :locale => current_locale})
+          if params[:action_type] == 'registration'
+            params.delete(:action_type)
+            url = request.fullpath
+            url['&action_type=registration']=''
+            session[:customer_return_to] = url
+            session[:new] = true
+            path = new_customer_registration_path(:promotion => params[:promotion], :p_id => params[:p_id], :site => params[:site])
+          else
+            # We're using session[:new] for the redirect (to this action) after authentication. Otherwise it would destroy current_customer all over again.
+            session[:new] = true
+            authenticate_customer!
+            session.delete(:new)
+          end
+          
+          if path
+            redirect_to path
+          else
+            redirect_to callback_url(params[:redirect_uri], {:code => current_customer.generate_verification_code!, :locale => current_locale})
+          end
         end
       end
     end

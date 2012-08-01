@@ -1,0 +1,123 @@
+@charset "UTF-8";
+/* CSS Document */
+a {
+	color: #AC5347;
+	text-decoration: none;
+}
+html, body {
+	background: url(../images/bg.jpg) repeat scroll 0 0 #202C37;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+}
+#lang {
+	display: block;
+	height: 24px;
+	margin: 0 auto;
+	padding-top: 16px;
+	text-align: right;
+	width: 350px;
+	font-size:12px;
+}
+#lang a {
+	color: #80868B;
+}
+#lang li {
+	display: inline;
+	margin: 0 12px 0 4px;
+}
+#lang a.active {
+	color: #D9E3EB;
+}
+#wrap_login {
+	margin: 0 auto;
+	width: 380px;
+}
+#login_content_bg {
+	background: none repeat scroll 0 0 #212A31;
+	box-shadow: 0 0 45px #000000;
+	color: #393939;
+	font-size: 16px;
+	font-weight: lighter;
+	height: 367px;
+	width: 380px;
+	padding-bottom: 20px;
+}
+.signup_forms {
+	background-color: #DBE1E4;
+	margin-top: 10px;
+	padding-top:10px;
+	padding-bottom:10px;
+	width: 380px;
+	color:#29323b;
+}
+#header_login {
+	font-size: 12px;
+	height: 28px;
+	position: relative;
+	text-align: right;
+	width: 100%;
+	padding-bottom: 20px;
+	z-index: 10;
+}
+#login_content {
+	padding-top: 10px;
+	width: 380px;
+}
+.signup_forms p {
+	border: 0 none;
+	padding: 10px 0px 0px 0px;
+	margin: 0;
+
+	width: 100%;
+}
+#login_content h1 {
+	background-attachment: scroll;
+	background-color: transparent;
+	background-image: url(../images/dvdpost_logo.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	display: block;
+	height: 34px;
+	text-align: center;
+}
+.like-btn {
+	display: inline-block;
+	outline: medium none;
+	text-indent: -999em;
+}
+#title {
+	color: #ffffff;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 30px;
+	margin-top: -25px;
+	text-align: center;
+}
+.check_login {
+	color: #FFFFFF;
+	font-size: 13px;
+	text-align: center;
+}
+.link_forget {
+	color: #A3C41B;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+}
+#submit_button {
+	background: url(../images/button_login_squared.png) repeat scroll 0 0 transparent;
+	border-style: none;
+	color: white;
+	cursor: pointer;
+	font-size: 18px;
+	height: 39px;
+	line-height: 22px;
+	width: 229px;
+}
+
+
+.wrong {
+    color: #FF4B00;
+    font-size: 12px;
+    margin-top: -10px;
+}
