@@ -42,7 +42,7 @@ set :repository, "git@github.com:dvdpost/dvdpost-sso.git"
 
 namespace :deploy do
   desc "Create the database yaml file"
-  task :after_update_code do
+  after "deploy:update_code" do
     db_config = <<-EOF
     staging:    
       adapter: mysql
