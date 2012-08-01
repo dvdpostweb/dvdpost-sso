@@ -138,6 +138,7 @@ PLATFORMS
 
 DEPENDENCIES
   airbrake
+  builder (~> 2.1.2)
   capistrano-ext
   devise!
   json
