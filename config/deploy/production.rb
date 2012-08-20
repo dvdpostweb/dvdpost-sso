@@ -42,7 +42,7 @@ set :deploy_via, :remote_cache
 
 namespace :deploy do
   desc "Create the database yaml file"
-  task :after_update_code do
+  after "deploy:update_code" do
     db_config = <<-EOF
     production:
       adapter: mysql
