@@ -66,7 +66,7 @@ GEM
     faraday (0.4.6)
       addressable (>= 2.1.1)
       rack (>= 1.0.1)
-    highline (1.6.2)
+    highline (1.6.12)
     i18n (0.5.0)
     json (1.6.1)
     mail (2.2.19)
