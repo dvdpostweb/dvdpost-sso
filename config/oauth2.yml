@@ -46,10 +46,6 @@ rails_mobile_staging_client:
   client_id: dvdpost_rails_staging_client
   client_secret: dvdpost_rails_staging_client_secret
   redirect_uri: http://m.staging.private.dvdpost.com/locale/callback
-rails_mobile_staging_client:
-  client_id: dvdpost_rails_staging_client
-  client_secret: dvdpost_rails_staging_client_secret
-  redirect_uri: http://staging.mobile.dvdpost.be/locale/callback
 php_development_client:
   client_id: dvdpost_php_development_client
   client_secret: dvdpost_php_development_client_secret
