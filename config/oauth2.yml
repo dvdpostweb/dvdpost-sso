@@ -21,7 +21,10 @@ rails_pre_prod_client:
   client_id: dvdpost_rails_pre_prod_client
   client_secret: dvdpost_rails_pre_prod_client_secret
   redirect_uri: http://beta.dvdpost.com/locale/callback
-
+rails_mobile_pre_prod_client:
+  client_id: dvdpost_rails_pre_prod_client
+  client_secret: dvdpost_rails_pre_prod_client_secret
+  redirect_uri: http://m.beta.dvdpost.com/locale/callback
 # Development clients
 rails_development_client:
   client_id: dvdpost_rails_development_client
@@ -39,6 +42,10 @@ rails_staging_client:
   client_id: dvdpost_rails_staging_client
   client_secret: dvdpost_rails_staging_client_secret
   redirect_uri: http://staging.private.dvdpost.com/locale/callback
+rails_mobile_staging_client:
+  client_id: dvdpost_rails_staging_client
+  client_secret: dvdpost_rails_staging_client_secret
+  redirect_uri: http://m.staging.private.dvdpost.com/locale/callback
 rails_mobile_staging_client:
   client_id: dvdpost_rails_staging_client
   client_secret: dvdpost_rails_staging_client_secret
