@@ -4,6 +4,7 @@ gem 'rails', '~> 3.0.7'
 
 gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
 gem 'mysql'
+gem 'capistrano', '2.13.5'
 gem 'capistrano-ext', :require => 'capistrano'
 gem "airbrake"
 gem "builder", "~> 2.1.2"
