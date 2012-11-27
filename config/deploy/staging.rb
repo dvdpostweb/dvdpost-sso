@@ -20,8 +20,8 @@ set :rails_env, "staging"
 #############################################################
 
 set :user, "sso"
-set :domain, "staging.dvdpost.be"
-set :domain2, '192.168.100.222'
+set :domain,  "217.112.190.177"
+set :domain2, "94.139.62.122"
 set :port, 22012
 role :web, domain, domain2
 role :app, domain, domain2
