@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.0.7'
+gem "rails", "~> 3.0.20"
 
-gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
+gem 'devise', "~> 1.5.4"
 gem 'mysql'
 gem 'capistrano', '2.13.5'
 gem 'capistrano-ext', :require => 'capistrano'

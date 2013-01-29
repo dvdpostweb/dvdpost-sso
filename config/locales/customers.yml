@@ -14,6 +14,7 @@ en:
         click_here: Click here
         connect: Connect
         warning: Incorrect e-mail address and/or password
+        remember_me: Remember Me
 fr:
   devise:
     sessions:
@@ -28,8 +29,9 @@ fr:
         pass_label: Mot de passe
         forgot_pass: Vous avez oublié votre mot de passe?
         click_here: Cliquez ici
-        connect: Login
+        connect: Connectez-vous
         warning: Votre mot de passe ou votre login est incorrect.
+        remember_me: Se souvenir de moi
 nl:
   devise:
     sessions:
@@ -44,5 +46,6 @@ nl:
         pass_label: Paswoord
         forgot_pass: Paswoord vergeten?
         click_here: Klik hier
-        connect: Login
+        connect: Meld u aan
         warning: Dit is geen geldig e-mailadres en/of paswoord
+        remember_me: Vergeet me niet
