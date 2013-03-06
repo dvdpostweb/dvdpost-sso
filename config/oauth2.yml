@@ -15,6 +15,10 @@ php_com_client:
   client_id: dvdpost_com_php_client
   client_secret: dvdpost_com_php_client_secret
   redirect_uri: http://www.dvdpost.com
+rails_mobile_prod_client:
+  client_id: dvdpost_rails_client
+  client_secret: dvdpost_rails_client_secret
+  redirect_uri: http://m.private.dvdpost.com/locale/callback
 
 # Pre production clients
 rails_pre_prod_client:
