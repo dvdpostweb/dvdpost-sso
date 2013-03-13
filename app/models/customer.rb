@@ -17,7 +17,7 @@ class Customer < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessor :promotion, :newsletter, :p_id
-  attr_accessible :customers_email_address, :password, :password_confirmation, :promotion, :newsletter, :p_id, :site
+  attr_accessible :customers_email_address, :password, :password_confirmation, :promotion, :newsletter, :p_id, :site, :remember_me
   def valid_password?(provided_password)
     hash_password, salt = customers_password.split(':')
     result = Digest::MD5.hexdigest("#{salt}#{provided_password}")
