@@ -11,6 +11,10 @@ php_nl_client:
   client_id: dvdpost_nl_php_client
   client_secret: dvdpost_nl_php_client_secret
   redirect_uri: http://www.dvdpost.nl
+php_lu_client:
+  client_id: dvdpost_lu_php_client
+  client_secret: dvdpost_lu_php_client_secret
+  redirect_uri: http://www.dvdpost.lu
 php_com_client:
   client_id: dvdpost_com_php_client
   client_secret: dvdpost_com_php_client_secret
