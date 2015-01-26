@@ -20,11 +20,11 @@ set :rails_env, "staging"
 #############################################################
 
 set :user, "sso"
-set :domain,  "217.112.190.177"
+set :domain,  "94.139.62.123"
 set :domain2, "94.139.62.122"
 set :port, 22012
-role :web, domain, domain2
-role :app, domain, domain2
+role :web, domain#, domain2
+role :app, domain#, domain2
 role :db, domain, :primary => true
 
 #############################################################

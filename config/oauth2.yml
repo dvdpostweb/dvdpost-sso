@@ -1,4 +1,8 @@
 # Production clients
+rails_client_nl:
+  client_id: dvdpost_nl_rails_client
+  client_secret: dvdpost_nl_rails_client_secret
+  redirect_uri: http://private.dvdpost.nl/locale/callback
 rails_client:
   client_id: dvdpost_rails_client
   client_secret: dvdpost_rails_client_secret

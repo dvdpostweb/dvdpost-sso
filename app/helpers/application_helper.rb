@@ -14,7 +14,11 @@ module ApplicationHelper
   end
 
   def dvdpost_url
-    'http://www.dvdpost.be'
+    if request.host_with_port.include?('dvdpost.nl') 
+      'http://www.dvdpost.nl'
+    else
+      'http://www.dvdpost.be'
+    end
   end
 
   def current_locale
