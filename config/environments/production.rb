@@ -3,7 +3,7 @@ DvdpostSso::Application.configure do
 
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
-  config.middleware.insert_before ActionDispatch::Static, "Rack::SSL"
+  #config.middleware.insert_before ActionDispatch::Static, "Rack::SSL"
   config.cache_classes = true
 
   # Full error reports are disabled and caching is turned on
