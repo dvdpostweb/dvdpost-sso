@@ -20,9 +20,9 @@ set :rails_env, "production"
 #############################################################
 
 set :user, "sso"
-set :domain,  "94.139.62.123"
-set :domain2, "94.139.62.122"
-set :port, 22012
+set :domain,  "192.168.102.12" #tokyo
+set :domain2,  "192.168.100.221" #stockholm
+set :port, 22
 role :web,  domain2
 role :app,  domain2
 role :db, domain2, :primary => true

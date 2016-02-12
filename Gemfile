@@ -8,6 +8,7 @@ gem 'capistrano', '2.13.5'
 gem 'capistrano-ext', :require => 'capistrano'
 gem "airbrake"
 gem "builder", "~> 2.1.2"
+gem 'rack-ssl', :require => 'rack/ssl'
 
 # This one actually belongs to the test group, but it raises an exception if it's not bundled in other environments.
 gem 'oauth2', :git => 'git://github.com/redstorm/oauth2.git'
