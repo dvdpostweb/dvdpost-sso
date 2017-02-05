@@ -1,19 +1,23 @@
 <div id="wrap_login">
-  <div id="header_login"> 
+  <div id="header_login">
     <ul id="lang">
-      <li> <%= link_to t('.home').upcase, dvdpost_url %> </li>
+      <% if Rails.env.production? %>
+        <li> <%= link_to t('.home').upcase, dvdpost_url %> </li>
+      <% else %>
+        <li> <%= link_to t('.home').upcase, "http://public.dvdpost.dev/" %> </li>
+      <% end %>
       <li><%= switch_locale_link I18n.locale.to_s.upcase, {:class => 'active'} %></li>
       <% I18n.available_locales.each do |locale| %>
         <%= content_tag :li, switch_locale_link(locale) unless locale.to_s == I18n.locale.to_s %>
       <% end %>
     </ul>
-    
+
   </div>
   <div id="login_content_bg">
     <div id="login_content" align="center">
-      
+
         <h1> <%= link_to 'DVDPost - Online DVD rental', dvdpost_url, :class => 'like-btn' %> </h1>
-      
+
       <div id="title"><%= t '.title' %></div>
       <div class="signup_forms" align="center">
         <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
@@ -25,7 +29,7 @@
           <%= t '.pass_label' %>:<br />
           <%= f.password_field :password, :class => 'inputs_codes', :size => '35', :maxlength => '40'%>
         </p>
-        
+
         <% if devise_mapping.rememberable? -%>
           <p class="check_login">
             <p>
@@ -41,10 +45,14 @@
           <%= f.submit t('.connect'), :id => 'submit_button' %>
         </p>
       <% end %>
-      </div> 
+      </div>
       <p class="check_login">
         <%= t '.forgot_pass' %>
-        <%= link_to t('.click_here'), 'http://www.dvdpost.be/password_forgotten.php', :class => 'link_forget' %>
+        <% if Rails.env.production? %>
+          <%= link_to t('.click_here'), 'http://www.dvdpost.be/password_forgotten.php', :class => 'link_forget' %>
+        <% else %>
+        <%= link_to t('.click_here'), 'http://localhost/password_forgotten.php', :class => 'link_forget' %>
+        <% end %>
       </p>
     </div>
   </div>
