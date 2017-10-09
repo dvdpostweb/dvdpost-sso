@@ -53,7 +53,7 @@ rails_mobile_staging_client:
 php_development_client:
   client_id: dvdpost_php_development_client
   client_secret: dvdpost_php_development_client_secret
-  redirect_uri: http://localhost
+  redirect_uri: http://dvdpost.dev
 
 # Test clients
 sinatra_client:
